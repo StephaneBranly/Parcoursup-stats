@@ -9,6 +9,7 @@ import { Button, Container, Grid } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider, createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import  About from "./components/about";
 import  Header  from "./components/header";
+import DataViewer from './components/dataViewer';
 
 
 
@@ -25,10 +26,9 @@ export const theme = createMuiTheme({
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      backgroundColor: "#edf3fc",
-      padding: 0,
-    },
+    grid: {
+      padding: theme.spacing(2),
+    }
   }),
 );
 
@@ -40,7 +40,6 @@ function App() {
   
   return (
     <ThemeProvider theme={theme}>
-      <Container className={classes.root}>
         <Helmet>
             <title>Parcoursup - Statistiques</title>
             <meta name="description" content="Visualiseur des données publiques de Parcoursup" />
@@ -50,17 +49,15 @@ function App() {
           container
           direction="column"
           justify="flex-start"
-          alignItems="stretch">
+          alignItems="stretch"
+          className={classes.grid}
+          spacing={2}
+        >
           <About></About>
           <Grid item>
-            <p>
-              Hello world
-            </p>
-          <Button color="primary">Test</Button>
+            <DataViewer></DataViewer>
           </Grid>
         </Grid>
-
-      </Container>
     </ThemeProvider>
   );
 }

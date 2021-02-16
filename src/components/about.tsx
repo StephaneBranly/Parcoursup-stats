@@ -7,7 +7,7 @@ import {
   } from "@material-ui/core";
   import React, { Component } from "react";
 
-  const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
         padding: theme.spacing(2),
