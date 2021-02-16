@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/StephaneBranly/Parcoursup-stats/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/StephaneBranly/Parcoursup-stats/static/js/main.1b38a968.chunk.js",
+    "main.js.map": "/StephaneBranly/Parcoursup-stats/static/js/main.1b38a968.chunk.js.map",
+    "runtime-main.js": "/StephaneBranly/Parcoursup-stats/static/js/runtime-main.1798a3ff.js",
+    "runtime-main.js.map": "/StephaneBranly/Parcoursup-stats/static/js/runtime-main.1798a3ff.js.map",
+    "static/js/2.99a10fde.chunk.js": "/StephaneBranly/Parcoursup-stats/static/js/2.99a10fde.chunk.js",
+    "static/js/2.99a10fde.chunk.js.map": "/StephaneBranly/Parcoursup-stats/static/js/2.99a10fde.chunk.js.map",
+    "static/js/3.e2f82c58.chunk.js": "/StephaneBranly/Parcoursup-stats/static/js/3.e2f82c58.chunk.js",
+    "static/js/3.e2f82c58.chunk.js.map": "/StephaneBranly/Parcoursup-stats/static/js/3.e2f82c58.chunk.js.map",
+    "index.html": "/StephaneBranly/Parcoursup-stats/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/StephaneBranly/Parcoursup-stats/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.99a10fde.chunk.js.LICENSE.txt": "/StephaneBranly/Parcoursup-stats/static/js/2.99a10fde.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/StephaneBranly/Parcoursup-stats/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1798a3ff.js",
+    "static/js/2.99a10fde.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.1b38a968.chunk.js"
+  ]
+}
