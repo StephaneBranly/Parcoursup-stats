@@ -18,15 +18,15 @@ const useStyles = makeStyles((theme: Theme) =>
 const columns: ColDef[] = [
   { field: "id", type: 'number'},
   { field: "Session", hide: true},
-  { field: "Statut de l’établissement de la filière de formation (public, privé…)", hide: false},
+  { field: "Statut de l’établissement de la filière de formation (public, privé…)", hide: false, width: 50},
   { field: "Code UAI de l'établissement", hide: true},
-  { field: "Établissement", hide: false},
+  { field: "Établissement", hide: false, width: 300},
   { field: "Code départemental de l’établissement", hide: true, type: 'number'},
-  { field: "Département de l’établissement", hide: false},
-  { field: "Région de l’établissement", hide: false},
-  { field: "Académie de l’établissement", hide: true},
-  { field: "Filière de formation très agrégée", hide: true},
-  { field: "Filière de formation", hide: true},
+  { field: "Département de l’établissement", hide: false, width: 200},
+  { field: "Région de l’établissement", hide: false, width: 200},
+  { field: "Académie de l’établissement", hide: false, width: 100},
+  { field: "Filière de formation très agrégée", hide: false, width: 200},
+  { field: "Filière de formation", hide: false, width: 200},
   { field: "Concours communs et banques d'épreuves", hide: true},
   { field: "Filière de formation détaillée", hide: true},
   { field: "Filière de formation très détaillée", hide: true},
@@ -118,7 +118,7 @@ export default function DataViewer(){
    
 
   React.useEffect(() => {
-    var content = data.object;
+    var content = (data as any).object;
     for(var i=0; i < content.length; i++){
       (content[i] as any).id = i+1;
   }
