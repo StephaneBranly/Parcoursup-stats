@@ -7,7 +7,6 @@ import {
     Theme,
   } from "@material-ui/core";
   import BarChartIcon from '@material-ui/icons/BarChart';
-  import React, { Component } from "react";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-export default function Header(){
+const Header = () => {
     const classes = useStyles(); 
     
     return (
@@ -43,3 +42,5 @@ export default function Header(){
         );
     
 }
+
+export default Header

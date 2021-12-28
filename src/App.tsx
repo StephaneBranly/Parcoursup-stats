@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import data from "./data/parcoursup2019.json"
 
 import { Helmet } from "react-helmet";
-import { Button, Container, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 
 import { createMuiTheme, ThemeProvider, createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import  About from "./components/about";
-import  Header  from "./components/header";
-import DataViewer from './components/dataViewer';
+import { Header, DataViewer, Comparer } from './components';
+import { DataType } from './type/DataType';
 
 
 
@@ -37,25 +37,39 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function App() {
   const classes = useStyles(); 
+  const [selectedRows, setSelectedRows] = useState<Array<unknown>>([])
+
+  const [rows, setRows] = useState([]);
+   
+  useEffect(() => {
+    var content = (data as any).object;
+    for(var i=0; i < content.length; i++){
+      (content[i] as any).id = i+1;
+  }
+    setRows(content);
+  },[]);
   
   return (
     <ThemeProvider theme={theme}>
         <Helmet>
             <title>Parcoursup - Statistiques</title>
             <meta name="description" content="Visualiseur des données publiques de Parcoursup" />
-          </Helmet>
-        <Header></Header>
+        </Helmet>
+        <Header/>
         <Grid 
           container
           direction="column"
-          justify="flex-start"
+          justify="space-between"
+          alignContent="stretch"
           alignItems="stretch"
           className={classes.grid}
           spacing={2}
         >
-          <About></About>
           <Grid item>
-            <DataViewer></DataViewer>
+            <DataViewer setSelectedRows={setSelectedRows} rows={rows}></DataViewer>
+          </Grid>
+          <Grid item>
+            <Comparer selectedData={selectedRows as DataType[]} />
           </Grid>
         </Grid>
     </ThemeProvider>
