@@ -3,7 +3,7 @@ import {
     Paper,
     Typography,
   } from "@material-ui/core";import { DataType } from "../../type/DataType";
-import { CapaciteFormation, NombreCandidats } from "../Graphs";
+import { CapaciteFormation, MentionBac, NombreCandidats } from "../Graphs";
 ;
 
 export interface ComparerProps {
@@ -18,6 +18,7 @@ const Comparer = (props: ComparerProps) => {
        return <div><Grid container spacing={4}>
            <Grid item><CapaciteFormation selectedRows={props.selectedData} /></Grid>
            <Grid item><NombreCandidats selectedRows={props.selectedData} /></Grid>
+           <Grid item><MentionBac selectedRows={props.selectedData} /></Grid>
            </Grid></div>
     }
     return <Paper>{switchContent()}</Paper>;

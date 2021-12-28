@@ -7,6 +7,7 @@ export interface NombreCandidatsProps {
 }
 export const NombreCandidats = (props: NombreCandidatsProps) => {
     const data = () => {
+      const keys = ["Effectif total des candidats pour une formation"]
       return props.selectedRows.map((a) => {return { "effectif-h": a["Effectif total des candidats pour une formation"] - a["Dont effectif des candidates pour une formation"], "effectif-f": a["Dont effectif des candidates pour une formation"], "Établissement": a["Établissement"]}})
     }
     return <BarChart width={730} height={250} data={data()}>
