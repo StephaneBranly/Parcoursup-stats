@@ -4,7 +4,7 @@ import './App.css';
 import data from "./data/parcoursup2019.json"
 
 import { Helmet } from "react-helmet";
-import { Grid } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 
 
 import { createMuiTheme, ThemeProvider, createStyles, makeStyles, Theme } from "@material-ui/core/styles";
@@ -56,14 +56,12 @@ function App() {
             <meta name="description" content="Visualiseur des données publiques de Parcoursup" />
         </Helmet>
         <Header/>
-        <Grid 
+        <Container><Grid 
           container
           direction="column"
-          justify="space-between"
           spacing={10}
           alignContent="stretch"
           alignItems="stretch"
-          className={classes.grid}
         >
           <Grid item>
             <DataViewer setSelectedRows={setSelectedRows} rows={rows}></DataViewer>
@@ -72,6 +70,7 @@ function App() {
             <Comparer selectedData={selectedRows as DataType[]} />
           </Grid>
         </Grid>
+        </Container>
     </ThemeProvider>
   );
 }
