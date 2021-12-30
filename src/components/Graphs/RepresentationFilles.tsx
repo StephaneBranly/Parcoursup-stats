@@ -31,7 +31,7 @@ export const RepresentationFilles = (props: RepresentationFillesProps) => {
     return <ResponsiveContainer width="100%" height={300}><BarChart data={data()}>
     <CartesianGrid strokeDasharray="3 3" />
     <XAxis dataKey="category" />
-    <YAxis />
+    <YAxis domain={[0, 100]} />
     <Tooltip />
     <Legend />
     {

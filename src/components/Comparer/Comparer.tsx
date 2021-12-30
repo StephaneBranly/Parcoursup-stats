@@ -3,6 +3,7 @@ import {
     Paper,
     Grid,
     Chip,
+    Container,
   } from "@material-ui/core";
 import { colors } from "../../App";
 import { DataType } from "../../type/DataType";
@@ -20,15 +21,18 @@ const Comparer = (props: ComparerProps) => {
        const length = props.selectedData.length
        if (!length) return <Typography>Selectionnez des écoles à comparer</Typography>
        if (length > 5) return <Typography>Selectionnez au plus 5 écoles</Typography>
-       return <Grid container>
-           <Grid item><Grid container direction="row" spacing={1}>{tagSchools()}</Grid></Grid>
-           <CapaciteEtDemande selectedRows={props.selectedData} />
-           <RepresentationFilles selectedRows={props.selectedData} />
-           <NombreCandidats selectedRows={props.selectedData} />
-           <MentionBac selectedRows={props.selectedData} />
+       return <Grid container 
+                spacing={10}
+                direction="column"
+                alignItems="stretch">
+           <Grid item><Grid container direction="row" spacing={2}>{tagSchools()}</Grid></Grid>
+           <Grid item><CapaciteEtDemande selectedRows={props.selectedData} /></Grid>
+           <Grid item><RepresentationFilles selectedRows={props.selectedData} /></Grid>
+           <Grid item><NombreCandidats selectedRows={props.selectedData} /></Grid>
+           <Grid item><MentionBac selectedRows={props.selectedData} /></Grid>
            </Grid>
     }
-    return <Paper>{switchContent()}</Paper>;
+    return <Paper><Container>{switchContent()}</Container></Paper>;
 }
 
 export default Comparer

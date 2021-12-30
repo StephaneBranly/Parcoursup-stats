@@ -60,6 +60,7 @@ function App() {
           container
           direction="column"
           justify="space-between"
+          spacing={10}
           alignContent="stretch"
           alignItems="stretch"
           className={classes.grid}
