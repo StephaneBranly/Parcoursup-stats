@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { DataGrid, ColDef, ValueGetterParams, GridToolbar } from '@material-ui/data-grid';
-import { Container, createStyles, makeStyles, Paper, Theme } from "@material-ui/core";
-import data from "./parcoursup2019.json"
+import React, { useState, useEffect } from "react";
+import { DataGrid, ColDef, ValueGetterParams, GridToolbar, RowId } from '@material-ui/data-grid';
+import { createStyles, makeStyles, Paper, Theme } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -16,14 +15,14 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 const columns: ColDef[] = [
-  { field: "id", type: 'number'},
+  { field: "id", type: 'number', hide: true},
   { field: "Session", hide: true},
-  { field: "Statut de l’établissement de la filière de formation (public, privé…)", hide: false, width: 50},
+  { field: "Statut de l’établissement de la filière de formation (public, privé…)", hide: false, width: 80},
   { field: "Code UAI de l'établissement", hide: true},
   { field: "Établissement", hide: false, width: 300},
   { field: "Code départemental de l’établissement", hide: true, type: 'number'},
-  { field: "Département de l’établissement", hide: false, width: 200},
-  { field: "Région de l’établissement", hide: false, width: 200},
+  { field: "Département de l’établissement", hide: true, width: 200},
+  { field: "Région de l’établissement", hide: true, width: 200},
   { field: "Académie de l’établissement", hide: false, width: 100},
   { field: "Filière de formation très agrégée", hide: false, width: 200},
   { field: "Filière de formation", hide: false, width: 200},
@@ -111,32 +110,29 @@ const columns: ColDef[] = [
   { field: "tri", hide: true},
 ];
 
-export default function DataViewer(){
+export interface DataViewerProps {
+  rows: Array<never>
+  setSelectedRows: React.Dispatch<React.SetStateAction<unknown[]>>
+}
+
+const DataViewer = (props: DataViewerProps) => {
   const classes = useStyles(); 
 
-  const [rows, setRows] = useState([]);
-   
-
-  React.useEffect(() => {
-    var content = (data as any).object;
-    for(var i=0; i < content.length; i++){
-      (content[i] as any).id = i+1;
+  const selectRows = (ids: RowId[]) => {
+    const newSelection = ids.map((id) => props.rows[Number(id) - 1])
+    props.setSelectedRows(newSelection)
   }
-    setRows(content);
-    console.log("Loaded");
-  },[]);
- 
-  
 
   return (
     <Paper className={classes.paper}>
       <div style={{ height: 600, width: '100%' }}>
         <DataGrid 
-          rows={rows} 
+          rows={props.rows} 
           columns={columns}
           pageSize={50}
           density="compact"
-          // checkboxSelection 
+          checkboxSelection
+          onSelectionChange={(e) => selectRows(e.rowIds)} 
           showToolbar
           localeText={{
             toolbarDensity: 'Size',
@@ -152,3 +148,5 @@ export default function DataViewer(){
     </Paper>
   );
 }
+
+export default DataViewer

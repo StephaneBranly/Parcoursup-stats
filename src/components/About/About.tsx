@@ -5,7 +5,6 @@ import {
     Theme,
     Paper,
   } from "@material-ui/core";
-  import React, { Component } from "react";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-export default function About(){
+const About = () => {
     const classes = useStyles(); 
     
     return (
@@ -38,5 +37,6 @@ export default function About(){
             </Grid>
         </Grid>
         );
-    
 }
+
+export default About
