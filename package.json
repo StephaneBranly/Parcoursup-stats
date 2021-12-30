@@ -20,6 +20,7 @@
     "react-helmet": "^6.1.0",
     "react-scripts": "4.0.2",
     "recharts": "^2.1.8",
+    "sass": "^1.45.1",
     "typescript": "^4.1.5",
     "web-vitals": "^1.1.0"
   },
@@ -50,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@types/carbon-components-react": "^7.46.1",
     "@types/react-helmet": "^6.1.0"
   }
 }

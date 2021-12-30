@@ -16,13 +16,15 @@ import { DataType } from './type/DataType';
 export const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#ba2d1a",
+      main: "#E84545",
     },
     secondary: {
-      main: "#2f60d4",
+      main: "#2B2E4A",
     },
   },
 });
+
+export const colors = ["#FF8370", "#00B1B0", "#FEC84D", "#E42256", "#54A2D2"]
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,8 +33,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }),
 );
-
-
 
 
 function App() {
@@ -63,7 +63,6 @@ function App() {
           alignContent="stretch"
           alignItems="stretch"
           className={classes.grid}
-          spacing={2}
         >
           <Grid item>
             <DataViewer setSelectedRows={setSelectedRows} rows={rows}></DataViewer>
