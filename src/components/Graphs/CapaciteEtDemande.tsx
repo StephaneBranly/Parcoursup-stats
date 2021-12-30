@@ -1,4 +1,5 @@
 import { Tooltip, ResponsiveContainer, Bar, BarChart, CartesianGrid, Legend, XAxis, YAxis } from "recharts"
+import { GraphTemplate } from "."
 import { colors } from "../../App"
 import { DataType } from "../../type/DataType"
 export interface CapaciteEtDemandeProps {
@@ -20,7 +21,7 @@ export const CapaciteEtDemande = (props: CapaciteEtDemandeProps) => {
         return finalData
     }
 
-    return <ResponsiveContainer width="100%" height={300}><BarChart data={data()}>
+    return <GraphTemplate name="Effectif de la formation et nombre de candidat.e.s" attribution="Parcoursup - 2020"><ResponsiveContainer width="100%" height={300}><BarChart data={data()}>
     <CartesianGrid strokeDasharray="3 3" />
     <XAxis dataKey="category" />
     <YAxis />
@@ -30,7 +31,7 @@ export const CapaciteEtDemande = (props: CapaciteEtDemandeProps) => {
         props.selectedRows.map((entry, index) => <Bar dataKey={entry.Établissement} fill={colors[index]} />)
     }
     
-  </BarChart></ResponsiveContainer>
+  </BarChart></ResponsiveContainer></GraphTemplate>
 }
 
 

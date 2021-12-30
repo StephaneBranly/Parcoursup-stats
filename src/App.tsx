@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import data from "./data/parcoursup2019.json"
+import data from "./data/parcoursup2020.json"
 
 import { Helmet } from "react-helmet";
 import { Container, Grid } from "@material-ui/core";

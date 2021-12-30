@@ -1,4 +1,5 @@
 import { Tooltip, ResponsiveContainer, Bar, BarChart, CartesianGrid, Legend, XAxis, YAxis } from "recharts"
+import { GraphTemplate } from "."
 import { colors } from "../../App"
 import { DataType } from "../../type/DataType"
 export interface RepresentationFillesProps {
@@ -28,7 +29,7 @@ export const RepresentationFilles = (props: RepresentationFillesProps) => {
         return finalData
     }
 
-    return <ResponsiveContainer width="100%" height={300}><BarChart data={data()}>
+    return <GraphTemplate name="Représentation des filles (%)" attribution="Parcoursup - 2020"><ResponsiveContainer width="100%" height={300}><BarChart data={data()}>
     <CartesianGrid strokeDasharray="3 3" />
     <XAxis dataKey="category" />
     <YAxis domain={[0, 100]} />
@@ -38,7 +39,7 @@ export const RepresentationFilles = (props: RepresentationFillesProps) => {
         props.selectedRows.map((entry, index) => <Bar dataKey={entry.Établissement} fill={colors[index]} />)
     }
     
-  </BarChart></ResponsiveContainer>
+  </BarChart></ResponsiveContainer></GraphTemplate>
 }
 
 

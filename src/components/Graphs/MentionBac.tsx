@@ -3,6 +3,7 @@ import { colors, theme } from "../../App"
 import { DataType } from "../../type/DataType"
 import { Grid,Paper, TableRow, TableCell } from "@material-ui/core";
 import { convertRowsPropToState } from "@material-ui/data-grid";
+import { GraphTemplate } from ".";
 export interface MentionBacProps {
     selectedRows: DataType[]
 }
@@ -24,7 +25,7 @@ export const MentionBac = (props: MentionBacProps) => {
         return finalData
     }
 
-    return <ResponsiveContainer width="100%" height={300}><BarChart data={data()}>
+    return <GraphTemplate name="Répartition des mentions au baccalauréat" attribution="Parcoursup - 2020"><ResponsiveContainer width="100%" height={300}><BarChart data={data()}>
     <CartesianGrid strokeDasharray="3 3" />
     <XAxis dataKey="Mention" />
     <YAxis />
@@ -34,7 +35,7 @@ export const MentionBac = (props: MentionBacProps) => {
         props.selectedRows.map((entry, index) => <Bar dataKey={entry.Établissement} fill={colors[index]} />)
     }
     
-  </BarChart></ResponsiveContainer>
+  </BarChart></ResponsiveContainer></GraphTemplate>
 }
 
 
