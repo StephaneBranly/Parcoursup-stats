@@ -10,7 +10,7 @@ import { Container, Grid } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 
 
-import { Header, DataViewer, Comparer } from './components';
+import { Header, DataViewer, Comparer, MapWrapper } from './components';
 import { DataType } from './type/DataType';
 import { theme } from './theme/theme';
 
@@ -44,6 +44,9 @@ function App() {
         >
           <Grid item>
             <DataViewer setSelectedRows={setSelectedRows} rows={rows}></DataViewer>
+          </Grid>
+          <Grid item>
+            <MapWrapper selectedData={selectedRows as DataType[]} dataAttribution={dataAttribution} />
           </Grid>
           <Grid item>
             <Comparer selectedData={selectedRows as DataType[]} dataAttribution={dataAttribution}/>
