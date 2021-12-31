@@ -1,45 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+
 import './App.css';
-import data from "./data/parcoursup2020.json"
+
+import data from "./data/parcoursup2019.json"
 
 import { Helmet } from "react-helmet";
+
 import { Container, Grid } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/core/styles";
 
 
-import { createMuiTheme, ThemeProvider, createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { Header, DataViewer, Comparer } from './components';
 import { DataType } from './type/DataType';
-
-
-
-export const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#E84545",
-    },
-    secondary: {
-      main: "#2B2E4A",
-    },
-  },
-});
-
-export const colors = ["#FF8370", "#00B1B0", "#FEC84D", "#E42256", "#54A2D2"]
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    grid: {
-      padding: theme.spacing(2),
-    }
-  }),
-);
-
+import { theme } from './theme/theme';
 
 function App() {
-  const classes = useStyles(); 
   const [selectedRows, setSelectedRows] = useState<Array<unknown>>([])
 
   const [rows, setRows] = useState([]);
+  const [dataAttribution, setDataAttribution] = useState("Parcoursup - 2019");
    
   useEffect(() => {
     var content = (data as any).object;
@@ -67,7 +46,7 @@ function App() {
             <DataViewer setSelectedRows={setSelectedRows} rows={rows}></DataViewer>
           </Grid>
           <Grid item>
-            <Comparer selectedData={selectedRows as DataType[]} />
+            <Comparer selectedData={selectedRows as DataType[]} dataAttribution={dataAttribution}/>
           </Grid>
         </Grid>
         </Container>

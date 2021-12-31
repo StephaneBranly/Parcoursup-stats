@@ -1,9 +1,10 @@
 import { Tooltip, ResponsiveContainer, Bar, BarChart, CartesianGrid, Legend, XAxis, YAxis } from "recharts"
 import { GraphTemplate } from "."
-import { colors } from "../../App"
+import { colors } from "../../theme/colors"
 import { DataType } from "../../type/DataType"
 export interface RepresentationFillesProps {
-    selectedRows: DataType[]
+    selectedData: DataType[]
+    dataAttribution: string
 }
 
 export const RepresentationFilles = (props: RepresentationFillesProps) => {
@@ -19,7 +20,7 @@ export const RepresentationFilles = (props: RepresentationFillesProps) => {
         const admises: Record<string, number | string> = {}
         admises['category'] = "% d'admises"
 
-        props.selectedRows.forEach((entry: any) => 
+        props.selectedData.forEach((entry: any) => 
         {
             candidates[entry.Établissement] = Math.floor(entry[effectifCandidatesKey] / entry[effectifCandidatsKey] * 100)
             admises[entry.Établissement] = Math.floor(entry[admisesKey])
@@ -29,14 +30,14 @@ export const RepresentationFilles = (props: RepresentationFillesProps) => {
         return finalData
     }
 
-    return <GraphTemplate name="Représentation des filles (%)" attribution="Parcoursup - 2020"><ResponsiveContainer width="100%" height={300}><BarChart data={data()}>
+    return <GraphTemplate name="Représentation des filles (%)" attribution={props.dataAttribution}><ResponsiveContainer width="100%" height={300}><BarChart data={data()}>
     <CartesianGrid strokeDasharray="3 3" />
     <XAxis dataKey="category" />
     <YAxis domain={[0, 100]} />
     <Tooltip />
     <Legend />
     {
-        props.selectedRows.map((entry, index) => <Bar dataKey={entry.Établissement} fill={colors[index]} />)
+        props.selectedData.map((entry, index) => <Bar dataKey={entry.Établissement} fill={colors[index]} />)
     }
     
   </BarChart></ResponsiveContainer></GraphTemplate>

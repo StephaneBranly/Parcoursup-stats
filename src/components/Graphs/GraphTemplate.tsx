@@ -1,5 +1,4 @@
-import { IconButton, Container, Typography } from "@material-ui/core"
-import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
+import { Container, Typography } from "@material-ui/core"
 import { createRef, RefObject } from "react";
 import { useScreenshot } from 'use-react-screenshot'
 

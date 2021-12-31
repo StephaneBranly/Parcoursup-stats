@@ -1,9 +1,10 @@
 import { Tooltip, ResponsiveContainer, Bar, BarChart, CartesianGrid, Legend, XAxis, YAxis } from "recharts"
 import { GraphTemplate } from "."
-import { colors } from "../../App"
+import { colors } from "../../theme/colors"
 import { DataType } from "../../type/DataType"
 export interface CapaciteEtDemandeProps {
-    selectedRows: DataType[]
+    selectedData: DataType[]
+    dataAttribution: string
 }
 
 export const CapaciteEtDemande = (props: CapaciteEtDemandeProps) => {
@@ -15,20 +16,20 @@ export const CapaciteEtDemande = (props: CapaciteEtDemandeProps) => {
         keys.forEach((key) => { 
             const object: Record<string, number | string> = {}; 
             object['category'] = key.category
-            props.selectedRows.forEach((entry: any) => object[entry.Établissement] = entry[key.key])
+            props.selectedData.forEach((entry: any) => object[entry.Établissement] = entry[key.key])
             finalData.push(object)
         })
         return finalData
     }
 
-    return <GraphTemplate name="Effectif de la formation et nombre de candidat.e.s" attribution="Parcoursup - 2020"><ResponsiveContainer width="100%" height={300}><BarChart data={data()}>
+    return <GraphTemplate name="Effectif de la formation et nombre de candidat.e.s" attribution={props.dataAttribution}><ResponsiveContainer width="100%" height={300}><BarChart data={data()}>
     <CartesianGrid strokeDasharray="3 3" />
     <XAxis dataKey="category" />
     <YAxis />
     <Tooltip />
     <Legend />
     {
-        props.selectedRows.map((entry, index) => <Bar dataKey={entry.Établissement} fill={colors[index]} />)
+        props.selectedData.map((entry, index) => <Bar dataKey={entry.Établissement} fill={colors[index]} />)
     }
     
   </BarChart></ResponsiveContainer></GraphTemplate>
