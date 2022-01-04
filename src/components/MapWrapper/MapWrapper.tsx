@@ -18,6 +18,11 @@ import Style from 'ol/style/Style';
 import { colors } from '../../theme/colors';
 import CircleStyle from 'ol/style/Circle';
 import Fill from 'ol/style/Fill';
+import Icon from 'ol/style/Icon';
+import Text from 'ol/style/Text';
+
+import markerIcon from '../../assets/marker.svg'
+import Stroke from 'ol/style/Stroke';
 
 export interface MapWrapperProps {
   selectedData: DataType[]
@@ -72,9 +77,17 @@ const MapWrapper = (props: MapWrapperProps) => {
       )
       feat.setStyle(
         new Style({ 
-          image: new CircleStyle({
-            fill: new Fill({ color: colors[index]}),
-            radius: 5,
+          text: new Text({ 
+            text: entry.Établissement, 
+            offsetY: 10,
+            fill: new Fill({ color: '#111' }),
+            stroke: new Stroke({ color: '#FFF', width: 2})
+          }),
+          image: new Icon({
+            src: markerIcon,
+            color: colors[index],
+            anchor: [0.5, 1],
+            scale: 0.5,
           }),
         })
       )
@@ -87,10 +100,10 @@ const MapWrapper = (props: MapWrapperProps) => {
     map.getView().fit(source.getExtent(), {
       padding: [100,100,100,100]
     })
-  }, [featuresLayer, map, props.selectedData])
+  }, [props.selectedData])
 
   return (
-    <Paper><div ref={mapElement} className="map-container"></div></Paper>
+    <Paper style={{overflow: "hidden"}}><div ref={mapElement} className="map-container"></div></Paper>
   )
 }
 
