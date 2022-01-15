@@ -1,0 +1,13 @@
+@import '../../theme/theme.scss';
+
+.pcs-header {
+    background-color: $primary;
+    height: 80px;
+    display: flex;
+    justify-items: baseline;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0 10px;
+    border-radius: $unit;
+    margin: $unit;
+}

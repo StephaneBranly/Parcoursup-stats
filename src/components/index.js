@@ -1,6 +1,5 @@
-import Comparer from './Comparer/Comparer'
-import DataViewer from './DataViewer/DataViewer'
 import Header from './Header/Header'
-import About from './About/About'
+import FormationInfos from './FormationInfos/FormationInfos'
 import MapWrapper from './MapWrapper/MapWrapper'
-export { Comparer, DataViewer, About, Header, MapWrapper }
+
+export { Header, FormationInfos, MapWrapper }
