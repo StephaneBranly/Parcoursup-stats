@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/parcoursup-stats/static/css/main.bb870399.chunk.css",
-    "main.js": "/parcoursup-stats/static/js/main.047f97d5.chunk.js",
-    "main.js.map": "/parcoursup-stats/static/js/main.047f97d5.chunk.js.map",
+    "main.css": "/parcoursup-stats/static/css/main.a197ecb6.chunk.css",
+    "main.js": "/parcoursup-stats/static/js/main.d731f24c.chunk.js",
+    "main.js.map": "/parcoursup-stats/static/js/main.d731f24c.chunk.js.map",
     "runtime-main.js": "/parcoursup-stats/static/js/runtime-main.5ad6c6e9.js",
     "runtime-main.js.map": "/parcoursup-stats/static/js/runtime-main.5ad6c6e9.js.map",
     "static/js/2.0785e9ed.chunk.js": "/parcoursup-stats/static/js/2.0785e9ed.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.c19c6be9.chunk.js": "/parcoursup-stats/static/js/3.c19c6be9.chunk.js",
     "static/js/3.c19c6be9.chunk.js.map": "/parcoursup-stats/static/js/3.c19c6be9.chunk.js.map",
     "index.html": "/parcoursup-stats/index.html",
-    "static/css/main.bb870399.chunk.css.map": "/parcoursup-stats/static/css/main.bb870399.chunk.css.map",
+    "static/css/main.a197ecb6.chunk.css.map": "/parcoursup-stats/static/css/main.a197ecb6.chunk.css.map",
     "static/js/2.0785e9ed.chunk.js.LICENSE.txt": "/parcoursup-stats/static/js/2.0785e9ed.chunk.js.LICENSE.txt",
     "static/media/logoParcoursup.3da2a0da.svg": "/parcoursup-stats/static/media/logoParcoursup.3da2a0da.svg",
     "static/media/marker.7a162fbb.svg": "/parcoursup-stats/static/media/marker.7a162fbb.svg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.5ad6c6e9.js",
     "static/js/2.0785e9ed.chunk.js",
-    "static/css/main.bb870399.chunk.css",
-    "static/js/main.047f97d5.chunk.js"
+    "static/css/main.a197ecb6.chunk.css",
+    "static/js/main.d731f24c.chunk.js"
   ]
 }
