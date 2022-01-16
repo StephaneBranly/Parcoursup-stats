@@ -1,13 +1,33 @@
 @import '../../theme/theme.scss';
 
 .pcs-header {
-    background-color: $primary;
-    height: 80px;
+    background-color: $blue3;
     display: flex;
-    justify-items: baseline;
     justify-content: space-between;
+    align-content: stretch;
     align-items: stretch;
+    flex-direction: row;
     padding: 0 10px;
-    border-radius: $unit;
-    margin: $unit;
+    border-radius: $unit * 3;
+    margin: $unit * 5;
+    & > * {
+        display: flex;
+        flex: 1 1 auto;
+    }
+    flex-wrap: wrap;
+}
+
+.pcs-header-logo {
+    width: 50px;
+}
+
+.pcs-header-title {
+    color: $farine;
+}
+
+@media (max-width: 480px) {
+    .pcs-header {
+        margin: 0;
+        border-radius: 0 0 $unit * 2 $unit * 2;
+    }
 }

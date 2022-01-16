@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import './App.css'
+import './App.scss'
 
 import { Helmet } from 'react-helmet'
 
@@ -15,14 +15,22 @@ function App() {
 
     const loadData = async () => {
         try {
-            const requestURL =
+            let finished = false
+            let dataLength = 0
+            while (!finished)
+            {
+                const requestURL =
                 parcoursupAPI +
-                '&q=&rows=10&fields=cod_aff_form,g_ea_lib_vx,g_olocalisation_des_formations'
-            const result = await axios.get(requestURL)
-            if (result.data) {
-                setSchoolsData(
-                    result.data.records.map((r: { fields: any }) => r.fields)
-                )
+                `&q=&rows=1000&start=${dataLength}&fields=cod_aff_form,g_ea_lib_vx,g_olocalisation_des_formations`
+                const result = await axios.get(requestURL)
+                if (result.data) {
+                    dataLength += result.data.records.length
+                    setSchoolsData(
+                        schoolsData.concat(result.data.records.map((r: { fields: any }) => r.fields))
+                    )
+                }
+
+                finished = true
             }
         } catch (e) {
             console.error('error')

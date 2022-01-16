@@ -5,18 +5,12 @@
     min-width: 200px;
     display: flex;
     flex: 1 1 auto;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .pcs-map-title {
-    position: absolute;
-    top: -10px;
-    left: $unit;
-    border-radius: $unit;
-    background-color: $secondary;
-    color: $primary;
-    padding: 5px;
-    z-index: 100;
-    box-shadow: $box-shadow;
+    padding: $unit;
 }
 
 .pcs-map {
@@ -29,7 +23,6 @@
     display: inline-block;
     height: 400px;
     width: 100%;
-    border-radius: $unit;
+    border-radius: $unit * 3;
     overflow: hidden;
-    border: 2px solid $secondary;
 }

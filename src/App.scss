@@ -1,0 +1,23 @@
+@import './theme/theme.scss';
+
+h1 {
+    color: $blue3;
+}
+
+.pcs-main-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: stretch;
+    align-items: stretch;
+    margin: $unit * 5 $unit * 5;
+    flex-wrap: wrap;
+    gap: $unit * 5;
+}
+
+@media (max-width: 480px) {
+    .pcs-main-section {
+        margin: $unit * 3 $unit;
+        gap: $unit * 2;
+    }
+}

@@ -3,10 +3,32 @@
 .pcs-formationinfos-fragment {
     display: flex;
     flex: 1 1 auto;
+    position: relative;
+    flex-direction: column;
 }
 
 .pcs-formationinfos {
-    background-color: $secondary;
-    border-radius: $unit;
-    width: 100%;
+    background-color: $red;
+    border-radius: $unit * 3;
+    padding: $unit;
+    margin-bottom: $unit;
+    h1 {
+        color: $farine;
+    }
+}
+
+.pcs-formationinfos-stats {
+    background-color: $farine;
+    border-radius: $unit * 3;
+    border: 2px solid $blue3;
+    padding: $unit;
+    margin-bottom: $unit;
+    h1 {
+        color: $farine;
+    }
+}
+
+
+.pcs-formationinfos-title {
+    padding: $unit;
 }

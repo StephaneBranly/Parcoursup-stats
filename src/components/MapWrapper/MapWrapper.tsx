@@ -4,21 +4,15 @@ import './MapWrapper.scss'
 
 import Map from 'ol/Map'
 import View from 'ol/View'
-import TileLayer from 'ol/layer/Tile'
-import VectorLayer from 'ol/layer/Vector'
 import VectorSource from 'ol/source/Vector'
-import XYZ from 'ol/source/XYZ'
 import Geometry from 'ol/geom/Geometry'
 import { Feature } from 'ol'
 import Point from 'ol/geom/Point'
 import { transform } from 'ol/proj'
-import Style from 'ol/style/Style'
-import Fill from 'ol/style/Fill'
-import Icon from 'ol/style/Icon'
-import Text from 'ol/style/Text'
 
-import markerIcon from '../../assets/marker.svg'
-import Stroke from 'ol/style/Stroke'
+import clusterLayer from './clusterLayer'
+import clusterSource from './clusterSource'
+import osmLayer from './osmLayer'
 
 export interface MapWrapperProps {
     schoolsData: Record<string, any>[]
@@ -27,26 +21,19 @@ export interface MapWrapperProps {
 
 const MapWrapper = (props: MapWrapperProps) => {
     const [map, setMap] = useState<Map>()
-    const [featuresLayer, setFeaturesLayer] =
-        useState<VectorLayer<VectorSource<Geometry>>>()
+    const [source, setSource] =
+        useState<VectorSource<Geometry>>()
 
     const mapElement = useRef() as RefObject<HTMLDivElement>
 
     useEffect(() => {
-        const initalFeaturesLayer = new VectorLayer({
-            source: new VectorSource(),
-        })
+        const new_source = new VectorSource()
 
         const initialMap = new Map({
             target: mapElement.current ?? undefined,
             layers: [
-                new TileLayer({
-                    maxZoom: 19,
-                    source: new XYZ({
-                        url: 'https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
-                    }),
-                }),
-                initalFeaturesLayer,
+                osmLayer(),
+                clusterLayer(clusterSource(new_source)),
             ],
             view: new View({
                 projection: 'EPSG:3857',
@@ -58,38 +45,26 @@ const MapWrapper = (props: MapWrapperProps) => {
 
         // save map and vector layer references to state
         setMap(initialMap)
-        setFeaturesLayer(initalFeaturesLayer)
+        setSource(new_source)
     }, [])
 
     useEffect(() => {
-        if (!featuresLayer || props.schoolsData.length === 0) return
+        if (!source || props.schoolsData.length === 0) return
 
-        const features = props.schoolsData.map((entry, index) => {
+        const features = props.schoolsData
+        .filter((entry) => { return entry['g_olocalisation_des_formations'] !== undefined })
+        .map((entry) => {
             const coord = entry['g_olocalisation_des_formations']
             const feat = new Feature({
                 geometry: new Point(
                     transform(coord.reverse(), 'EPSG:4326', 'EPSG:3857')
                 ),
             })
-            feat.setStyle(
-                new Style({
-                    text: new Text({
-                        text: entry.Établissement,
-                        offsetY: 10,
-                        fill: new Fill({ color: '#111' }),
-                        stroke: new Stroke({ color: '#FF3333', width: 2 }),
-                    }),
-                    image: new Icon({
-                        src: markerIcon,
-                        color: 'red',
-                        anchor: [0.5, 1],
-                        scale: 0.5,
-                    }),
-                })
-            )
+            feat.setProperties({ ...entry })
             return feat
         })
-        const source = featuresLayer.getSource()
+
+        if(!features) return
         source.clear()
         source.addFeatures(features)
         if (!map) return
@@ -100,7 +75,7 @@ const MapWrapper = (props: MapWrapperProps) => {
 
     return (
         <div className="pcs-map-fragment">
-            <div className="pcs-map-title">Carte des formations</div>
+            <h1 className="pcs-map-title">Carte des formations</h1>
             <div className="pcs-map-container">
                 <div ref={mapElement} className="pcs-map"></div>
             </div>
