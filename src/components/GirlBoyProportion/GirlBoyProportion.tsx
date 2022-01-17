@@ -1,6 +1,6 @@
 
 import { StatsCard } from 'components'
-import { ResponsiveContainer, PieChart, Pie, Legend, Cell, LabelList } from 'recharts'
+import { ResponsiveContainer, PieChart, Pie, Legend, LabelList } from 'recharts'
 
 export interface GirlBoyProportionProps {
     count_candidat_boys: number,

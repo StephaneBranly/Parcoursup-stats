@@ -6,16 +6,18 @@ import Map from 'ol/Map'
 import View from 'ol/View'
 import VectorSource from 'ol/source/Vector'
 import Geometry from 'ol/geom/Geometry'
-import { Feature } from 'ol'
+import { Feature, MapBrowserEvent } from 'ol'
 import Point from 'ol/geom/Point'
 import { transform } from 'ol/proj'
 
 import clusterLayer from './clusterLayer'
 import clusterSource from './clusterSource'
 import osmLayer from './osmLayer'
+import { clickMap } from 'utils'
 
 export interface MapWrapperProps {
     schoolsData: Record<string, any>[]
+    loadSchool: (schoolID: string) => void
     dataAttribution: string
 }
 
@@ -43,6 +45,7 @@ const MapWrapper = (props: MapWrapperProps) => {
             controls: [],
         })
 
+        initialMap.addEventListener('singleclick', (e) => clickMap(e as MapBrowserEvent<UIEvent>, initialMap, props.loadSchool))
         // save map and vector layer references to state
         setMap(initialMap)
         setSource(new_source)

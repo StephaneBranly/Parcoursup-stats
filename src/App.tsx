@@ -7,12 +7,23 @@ import { Helmet } from 'react-helmet'
 import { FormationInfos, Header, MapWrapper } from './components'
 import { parcoursupAPI } from './global/parcoursupAPI'
 import axios from 'axios'
+import { loadFormationData } from 'utils'
 
 function App() {
-    // reloa
-    const [selectedSchool, setSelectedSchool] = useState<string | undefined>()
+    const [selectedSchool, setSelectedSchool] = useState<Record<string, any> | undefined>()
     const [schoolsData, setSchoolsData] = useState<Record<string, any>[]>([])
 
+    const loadSchool = async (schoolID: string) => {
+        const result = await loadFormationData(schoolID)
+        console.log(result)
+        setSelectedSchool(result)
+    }
+
+    useEffect(() => {
+        loadData()
+    }, [])
+
+   
     const loadData = async () => {
         try {
             let finished = false
@@ -52,8 +63,8 @@ function App() {
             </Helmet>
             <Header />
             <section className="pcs-main-section">
-                <MapWrapper schoolsData={schoolsData} dataAttribution={''} />
-                <FormationInfos />
+                <MapWrapper schoolsData={schoolsData} dataAttribution={''} loadSchool={loadSchool} />
+                <FormationInfos currentSchool={selectedSchool} />
             </section>
         </section>
     )

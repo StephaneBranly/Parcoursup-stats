@@ -1,6 +1,6 @@
 
 import { StatsCard } from 'components'
-import { ResponsiveContainer, Funnel, FunnelChart, LabelList, Tooltip, Legend } from 'recharts'
+import { ResponsiveContainer, Funnel, FunnelChart, LabelList } from 'recharts'
 
 export interface FunnelCandidatesProps {
     count_candidates: number,
@@ -26,7 +26,7 @@ const FunnelCandidates = (props: FunnelCandidatesProps) => {
     return (
         <StatsCard title={title}>
             <ResponsiveContainer width="100%" height={250}>
-                <FunnelChart height={250}>
+                <FunnelChart>
                     <Funnel
                         dataKey="value"
                         data={data}
