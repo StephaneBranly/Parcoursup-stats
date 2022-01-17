@@ -10,7 +10,9 @@ import axios from 'axios'
 import { loadFormationData } from 'utils'
 
 function App() {
-    const [selectedSchool, setSelectedSchool] = useState<Record<string, any> | undefined>()
+    const [selectedSchool, setSelectedSchool] = useState<
+        Record<string, any> | undefined
+    >()
     const [schoolsData, setSchoolsData] = useState<Record<string, any>[]>([])
 
     const loadSchool = async (schoolID: string) => {
@@ -23,21 +25,23 @@ function App() {
         loadData()
     }, [])
 
-   
     const loadData = async () => {
         try {
             let finished = false
             let dataLength = 0
-            while (!finished)
-            {
+            while (!finished) {
                 const requestURL =
-                parcoursupAPI +
-                `&q=&rows=1000&start=${dataLength}&fields=cod_aff_form,g_ea_lib_vx,g_olocalisation_des_formations`
+                    parcoursupAPI +
+                    `&q=&rows=1000&start=${dataLength}&fields=cod_aff_form,g_ea_lib_vx,g_olocalisation_des_formations`
                 const result = await axios.get(requestURL)
                 if (result.data) {
                     dataLength += result.data.records.length
                     setSchoolsData(
-                        schoolsData.concat(result.data.records.map((r: { fields: any }) => r.fields))
+                        schoolsData.concat(
+                            result.data.records.map(
+                                (r: { fields: any }) => r.fields
+                            )
+                        )
                     )
                 }
 
@@ -63,7 +67,11 @@ function App() {
             </Helmet>
             <Header />
             <section className="pcs-main-section">
-                <MapWrapper schoolsData={schoolsData} dataAttribution={''} loadSchool={loadSchool} />
+                <MapWrapper
+                    schoolsData={schoolsData}
+                    dataAttribution={''}
+                    loadSchool={loadSchool}
+                />
                 <FormationInfos currentSchool={selectedSchool} />
             </section>
         </section>

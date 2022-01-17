@@ -1,6 +1,10 @@
 import { Map, MapBrowserEvent } from 'ol'
 
-export const clickMap = (evt: MapBrowserEvent<UIEvent>, map: Map, setSelectedSchoolID: (id: string) => void) => {
+export const clickMap = (
+    evt: MapBrowserEvent<UIEvent>,
+    map: Map,
+    setSelectedSchoolID: (id: string) => void
+) => {
     const features: any[] = []
     map.forEachFeatureAtPixel(evt.pixel, (f: any) => features.push(f))
     console.log(features)
@@ -10,5 +14,4 @@ export const clickMap = (evt: MapBrowserEvent<UIEvent>, map: Map, setSelectedSch
     console.log(properties)
     if (properties['cod_aff_form'])
         setSelectedSchoolID(properties['cod_aff_form'])
-    
 }

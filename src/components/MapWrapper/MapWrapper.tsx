@@ -23,8 +23,7 @@ export interface MapWrapperProps {
 
 const MapWrapper = (props: MapWrapperProps) => {
     const [map, setMap] = useState<Map>()
-    const [source, setSource] =
-        useState<VectorSource<Geometry>>()
+    const [source, setSource] = useState<VectorSource<Geometry>>()
 
     const mapElement = useRef() as RefObject<HTMLDivElement>
 
@@ -33,10 +32,7 @@ const MapWrapper = (props: MapWrapperProps) => {
 
         const initialMap = new Map({
             target: mapElement.current ?? undefined,
-            layers: [
-                osmLayer(),
-                clusterLayer(clusterSource(new_source)),
-            ],
+            layers: [osmLayer(), clusterLayer(clusterSource(new_source))],
             view: new View({
                 projection: 'EPSG:3857',
                 center: [0, 0],
@@ -45,7 +41,13 @@ const MapWrapper = (props: MapWrapperProps) => {
             controls: [],
         })
 
-        initialMap.addEventListener('singleclick', (e) => clickMap(e as MapBrowserEvent<UIEvent>, initialMap, props.loadSchool))
+        initialMap.addEventListener('singleclick', (e) =>
+            clickMap(
+                e as MapBrowserEvent<UIEvent>,
+                initialMap,
+                props.loadSchool
+            )
+        )
         // save map and vector layer references to state
         setMap(initialMap)
         setSource(new_source)
@@ -55,19 +57,21 @@ const MapWrapper = (props: MapWrapperProps) => {
         if (!source || props.schoolsData.length === 0) return
 
         const features = props.schoolsData
-        .filter((entry) => { return entry['g_olocalisation_des_formations'] !== undefined })
-        .map((entry) => {
-            const coord = entry['g_olocalisation_des_formations']
-            const feat = new Feature({
-                geometry: new Point(
-                    transform(coord.reverse(), 'EPSG:4326', 'EPSG:3857')
-                ),
+            .filter((entry) => {
+                return entry['g_olocalisation_des_formations'] !== undefined
             })
-            feat.setProperties({ ...entry })
-            return feat
-        })
+            .map((entry) => {
+                const coord = entry['g_olocalisation_des_formations']
+                const feat = new Feature({
+                    geometry: new Point(
+                        transform(coord.reverse(), 'EPSG:4326', 'EPSG:3857')
+                    ),
+                })
+                feat.setProperties({ ...entry })
+                return feat
+            })
 
-        if(!features) return
+        if (!features) return
         source.clear()
         source.addFeatures(features)
         if (!map) return

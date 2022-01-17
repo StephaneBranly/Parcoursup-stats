@@ -6,4 +6,12 @@ import FunnelCandidates from './FunnelCandidates/FunnelCandidates'
 import StatsCard from './StatsCard/StatsCard'
 import BaccalaureatMention from './BaccalaureatMention/BaccalaureatMention'
 
-export { Header, FormationInfos, MapWrapper, GirlBoyProportion, FunnelCandidates, StatsCard, BaccalaureatMention }
+export {
+    Header,
+    FormationInfos,
+    MapWrapper,
+    GirlBoyProportion,
+    FunnelCandidates,
+    StatsCard,
+    BaccalaureatMention,
+}
