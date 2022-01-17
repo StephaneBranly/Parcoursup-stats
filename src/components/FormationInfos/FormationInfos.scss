@@ -2,12 +2,21 @@
 
 .pcs-formationinfos-fragment {
     display: flex;
-    flex: 1 1 auto;
+    flex: 1 1;
     position: relative;
     flex-direction: column;
+
+    .pcs-stats-ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0 $unit;
+        li {
+            margin: $unit 0;
+        }
+    }
 }
 
-.pcs-formationinfos {
+.pcs-formationinfos-main {
     background-color: $red;
     border-radius: $unit * 3;
     padding: $unit;
@@ -26,9 +35,27 @@
     h1 {
         color: $farine;
     }
+    b {
+        color: $blue3;
+    }
 }
 
 
 .pcs-formationinfos-title {
     padding: $unit;
+}
+
+
+.pcs-formationinfo-statscard-wrapper {
+    display: flex;
+    direction: row;
+    gap: $unit * 3;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: stretch;
+    align-items: stretch;
+
+    div {
+        flex: 1 1;
+    }
 }
