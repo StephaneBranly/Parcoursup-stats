@@ -41,13 +41,13 @@ const FunnelCandidates = (props: FunnelCandidatesProps) => {
             name: 'Nombre de candidats ayant recu une proposition',
             value: count_proposition_received,
             fill: '#457b9d',
-            label: createLabel(count_proposition_received, 'reçu.e.s'),
+            label: createLabel(count_proposition_received, 'admis.e.s'),
         },
         {
             name: 'Nombre de candidats ayant accepté la proposition',
             value: count_proposition_accepted,
             fill: '#1d3557',
-            label: createLabel(count_proposition_accepted, 'accepté.e.s'),
+            label: createLabel(count_proposition_accepted, 'ont accepté'),
         },
     ]
 

@@ -1,5 +1,6 @@
 import {
     BaccalaureatMention,
+    FillingSpeed,
     FunnelCandidates,
     GirlBoyProportion,
 } from 'components'
@@ -13,6 +14,50 @@ export interface FormationInfosProps {
 const FormationInfos = (props: FormationInfosProps) => {
     const { currentSchool } = props
     const s = currentSchool
+
+    const renderRankLastCalled = () => {
+        if (!s) return
+        return [1, 2, 3, 4, 5]
+            .map((grpNumber: number) => {
+                const rank = getField(s, `ran_grp${grpNumber}`)
+                const groupLabel = getField(s, `lib_grp${grpNumber}`)
+                return [grpNumber, Number(rank), groupLabel]
+            })
+            .filter(
+                ([index, rank, group]) =>
+                    rank !== 'NaN' &&
+                    rank !== 0 &&
+                    group !== 'NaN' &&
+                    group !== ''
+            )
+            .map(([index, rank, group]) => (
+                <li>
+                    {group} : <b>{rank}</b>
+                </li>
+            ))
+    }
+
+    const renderSameAcademy = () => {
+        if (!s) return
+        if (getField(s, 'pct_aca_orig_idf') === 'NaN') return
+        return (
+            <li>
+                📚 <b>{getField(s, 'pct_aca_orig_idf')}%</b> d'admis.e.s
+                néobachelier.e.s issu.e.s de la même académie
+                (Paris/Crétail/Versailles réunies)
+            </li>
+        )
+    }
+    const renderSameSchool = () => {
+        if (!s) return
+        if (getField(s, 'pct_etab_orig') === 'NaN') return
+        return (
+            <li>
+                🏢 <b>{getField(s, 'pct_etab_orig')}%</b> d'admis.e.s
+                néobachelier.e.s issu.e.s du même établissement
+            </li>
+        )
+    }
 
     if (!s)
         return (
@@ -36,6 +81,7 @@ const FormationInfos = (props: FormationInfosProps) => {
                 </h1>
                 <p>
                     <ul className="pcs-stats-ul">
+                        <li>🗂 {getField(s, 'select_form')}</li>
                         <li>
                             🏢 {getField(s, 'g_ea_lib_vx')} -{' '}
                             <i>{getField(s, 'contrat_etab')}</i>
@@ -58,6 +104,13 @@ const FormationInfos = (props: FormationInfosProps) => {
                         <li>
                             📄 <b>{getField(s, 'voe_tot')}</b> voeux enregistrés
                         </li>
+                        <li>
+                            <b>🗂 Rangs des derniers appelés :</b>
+                        </li>
+                        {renderRankLastCalled()}
+                        {renderSameAcademy()}
+
+                        {renderSameSchool()}
                     </ul>
                 </p>
             </div>
@@ -87,7 +140,13 @@ const FormationInfos = (props: FormationInfosProps) => {
                     count_ab={getField(s, 'acc_ab')}
                     count_sm={getField(s, 'acc_sansmention')}
                     count_nr={getField(s, 'acc_mention_nonrenseignee')}
-                    title={'Mentions des néo-bachelier.e.s'}
+                    title={'Mention au bac des néobachelier.e.s'}
+                />
+                <FillingSpeed
+                    count_start_pp={getField(s, 'pct_acc_debutpp')}
+                    count_bac={getField(s, 'pct_acc_datebac')}
+                    count_end_pp={getField(s, 'pct_acc_finpp')}
+                    title={'Vitesse de remplissage'}
                 />
             </div>
         </div>

@@ -1,18 +1,5 @@
 import { StatsCard } from 'components'
-import { COLORS } from 'html2canvas/dist/types/css/types/color'
-import {
-    ResponsiveContainer,
-    PolarAngleAxis,
-    PolarGrid,
-    PolarRadiusAxis,
-    Radar,
-    RadarChart,
-    Cell,
-    Pie,
-    PieChart,
-    LabelList,
-    Legend,
-} from 'recharts'
+import { ResponsiveContainer, Pie, PieChart, Legend } from 'recharts'
 
 export interface BaccalaureatMentionProps {
     count_tb: number

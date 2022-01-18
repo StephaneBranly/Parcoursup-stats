@@ -5,6 +5,7 @@ import GirlBoyProportion from './GirlBoyProportion/GirlBoyProportion'
 import FunnelCandidates from './FunnelCandidates/FunnelCandidates'
 import StatsCard from './StatsCard/StatsCard'
 import BaccalaureatMention from './BaccalaureatMention/BaccalaureatMention'
+import FillingSpeed from './FillingSpeed/FillingSpeed'
 
 export {
     Header,
@@ -14,4 +15,5 @@ export {
     FunnelCandidates,
     StatsCard,
     BaccalaureatMention,
+    FillingSpeed,
 }
