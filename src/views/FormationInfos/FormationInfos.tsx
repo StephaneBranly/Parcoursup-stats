@@ -32,7 +32,7 @@ const FormationInfos = (props: FormationInfosProps) => {
             )
             .map(([index, rank, group]) => (
                 <li>
-                    {group} : <b>{rank}</b>
+                    {group} : <b>{rank}ème</b>
                 </li>
             ))
     }
@@ -42,7 +42,7 @@ const FormationInfos = (props: FormationInfosProps) => {
         if (getField(s, 'pct_aca_orig_idf') === 'NaN') return
         return (
             <li>
-                📚 <b>{getField(s, 'pct_aca_orig_idf')}%</b> d'admis.e.s
+                📚 <b>{Number(getField(s, 'pct_aca_orig_idf')).toFixed(0)}%</b> d'admis.e.s
                 néobachelier.e.s issu.e.s de la même académie
                 (Paris/Crétail/Versailles réunies)
             </li>
@@ -53,7 +53,7 @@ const FormationInfos = (props: FormationInfosProps) => {
         if (getField(s, 'pct_etab_orig') === 'NaN') return
         return (
             <li>
-                🏢 <b>{getField(s, 'pct_etab_orig')}%</b> d'admis.e.s
+                🏢 <b>{Number(getField(s, 'pct_etab_orig')).toFixed(0)}%</b> d'admis.e.s
                 néobachelier.e.s issu.e.s du même établissement
             </li>
         )
@@ -95,7 +95,7 @@ const FormationInfos = (props: FormationInfosProps) => {
             </div>
             <div className="pcs-formationinfos-stats">
                 <p>
-                    <b>En 2020 :</b>
+                    <b>En 2021 :</b>
                     <ul className="pcs-stats-ul">
                         <li>
                             🎓 <b>{getField(s, 'capa_fin')}</b> places
@@ -105,7 +105,7 @@ const FormationInfos = (props: FormationInfosProps) => {
                             📄 <b>{getField(s, 'voe_tot')}</b> voeux enregistrés
                         </li>
                         <li>
-                            <b>🗂 Rangs des derniers appelés :</b>
+                            <b>🗂 Rangs des derniers appelés par groupe :</b>
                         </li>
                         {renderRankLastCalled()}
                         {renderSameAcademy()}
@@ -135,6 +135,7 @@ const FormationInfos = (props: FormationInfosProps) => {
                     title={'Sélectivité de la formation'}
                 />
                 <BaccalaureatMention
+                    count_tbf={getField(s, 'acc_tbf')}
                     count_tb={getField(s, 'acc_tb')}
                     count_b={getField(s, 'acc_b')}
                     count_ab={getField(s, 'acc_ab')}

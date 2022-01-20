@@ -4,10 +4,11 @@ import './App.scss'
 
 import { Helmet } from 'react-helmet'
 
-import { FormationInfos, Header, MapWrapper } from './components'
+import { Header, MapWrapper } from './components'
 import { parcoursupAPI } from './global/parcoursupAPI'
 import axios from 'axios'
 import { loadFormationData } from 'utils'
+import { FormationInfos } from 'views'
 
 function App() {
     const [selectedSchool, setSelectedSchool] = useState<

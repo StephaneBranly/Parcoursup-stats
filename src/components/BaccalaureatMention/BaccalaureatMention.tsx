@@ -2,6 +2,7 @@ import { StatsCard } from 'components'
 import { ResponsiveContainer, Pie, PieChart, Legend } from 'recharts'
 
 export interface BaccalaureatMentionProps {
+    count_tbf: number
     count_tb: number
     count_b: number
     count_ab: number
@@ -11,9 +12,9 @@ export interface BaccalaureatMentionProps {
 }
 
 const BaccalaureatMention = (props: BaccalaureatMentionProps) => {
-    const { title, count_ab, count_b, count_nr, count_sm, count_tb } = props
+    const { title, count_ab, count_b, count_nr, count_sm, count_tb, count_tbf } = props
 
-    const total = count_ab + count_b + count_nr + count_sm + count_tb
+    const total = count_ab + count_b + count_nr + count_sm + count_tb + count_tbf
 
     const createLabel = (val: number): string => {
         if (!val) return ''
@@ -21,6 +22,12 @@ const BaccalaureatMention = (props: BaccalaureatMentionProps) => {
     }
 
     const data = [
+        {
+            name: 'Très bien (avec félicitations)',
+            value: count_tbf,
+            fill: '#a639d6',
+            label: createLabel(count_tbf),
+        },
         {
             name: 'Très bien',
             value: count_tb,
