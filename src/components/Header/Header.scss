@@ -7,7 +7,7 @@
     align-content: stretch;
     align-items: stretch;
     flex-direction: row;
-    padding: 0 10px;
+    padding: 0 $unit * 3;
     border-radius: $unit * 3;
     margin: $unit * 5;
     & > * {
@@ -15,6 +15,7 @@
         flex: 1 1 auto;
     }
     flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .pcs-header-logo {
@@ -23,6 +24,50 @@
 
 .pcs-header-title {
     color: $farine;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.pcs-header-menu {
+    display: flex;
+    justify-content: space-between;
+    align-content: stretch;
+    align-items: stretch;
+}
+
+.pcs-header-view-button {
+    padding-top: $unit * 2;
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    align-content: stretch;
+    align-items: stretch;
+    flex-direction: column;
+    text-align: center;
+    color: $farine;
+    &.active {
+        background-color: $farine;
+        border-radius: $unit * 2 $unit * 2 0 0;
+        color: $blue3;
+    }
+}
+.pcs-header-view-button-icon {
+    display: flex;
+    flex: 1 1 auto;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.pcs-header-view-button-icon-content {
+    display: flex;
+    flex: 1 1 auto;
+    font-size: xx-large;
+}
+.pcs-header-view-button-name {
+    text-align: center;
 }
 
 @media (max-width: 480px) {

@@ -19,7 +19,7 @@ export interface FillingSpeedProps {
 const FillingSpeed = (props: FillingSpeedProps) => {
     const { title, count_bac, count_end_pp, count_start_pp } = props
 
-    const renderLabel = (value: number): string => `${value}%`
+    const renderLabel = (value: number): string => `${value.toFixed(0)}%`
     const data = [
         {
             name: '27 mai',

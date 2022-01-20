@@ -11,6 +11,7 @@ import { loadFormationData } from 'utils'
 import { FormationInfos } from 'views'
 
 function App() {
+    const [currentView, setCurrentView] = useState<string>('findFormation')
     const [selectedSchool, setSelectedSchool] = useState<
         Record<string, any> | undefined
     >()
@@ -33,7 +34,7 @@ function App() {
             while (!finished) {
                 const requestURL =
                     parcoursupAPI +
-                    `&q=&rows=1000&start=${dataLength}&fields=cod_aff_form,g_ea_lib_vx,g_olocalisation_des_formations`
+                    `&q=&rows=10000&start=${dataLength}&fields=cod_aff_form,g_ea_lib_vx,g_olocalisation_des_formations`
                 const result = await axios.get(requestURL)
                 if (result.data) {
                     dataLength += result.data.records.length
@@ -57,6 +58,25 @@ function App() {
         loadData()
     }, [])
 
+    const renderView = () => {
+        switch (currentView) {
+            case 'findFormation':
+                return (
+                    <MapWrapper
+                        schoolsData={schoolsData}
+                        dataAttribution={''}
+                        loadSchool={loadSchool}
+                    />
+                )
+            case 'seeFormationInfos':
+                return <FormationInfos currentSchool={selectedSchool} />
+            default:
+                return (
+                    <p>Seems like you something is broken :( Reload the page</p>
+                )
+        }
+    }
+
     return (
         <section>
             <Helmet>
@@ -66,15 +86,8 @@ function App() {
                     content="Visualiseur des données publiques de Parcoursup"
                 />
             </Helmet>
-            <Header />
-            <section className="pcs-main-section">
-                <MapWrapper
-                    schoolsData={schoolsData}
-                    dataAttribution={''}
-                    loadSchool={loadSchool}
-                />
-                <FormationInfos currentSchool={selectedSchool} />
-            </section>
+            <Header currentView={currentView} setView={setCurrentView} />
+            <section className="pcs-main-section">{renderView()}</section>
         </section>
     )
 }
