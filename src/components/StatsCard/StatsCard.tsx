@@ -2,7 +2,7 @@ import './StatsCard.scss'
 export interface StatsCardProps {
     children: JSX.Element
     title: string
-    description?: string
+    description?: string | JSX.Element
 }
 
 const StatsCard = (props: StatsCardProps) => {

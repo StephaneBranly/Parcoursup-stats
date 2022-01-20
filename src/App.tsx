@@ -4,8 +4,8 @@ import './App.scss'
 
 import { Helmet } from 'react-helmet'
 
-import { Header, MapWrapper } from './components'
-import { parcoursupAPI } from './global/parcoursupAPI'
+import { Header, MapWrapper } from 'components'
+import { parcoursupAPI } from 'global/parcoursupAPI'
 import axios from 'axios'
 import { loadFormationData } from 'utils'
 import { FormationInfos } from 'views'

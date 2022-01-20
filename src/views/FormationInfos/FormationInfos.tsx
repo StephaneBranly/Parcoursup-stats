@@ -42,8 +42,8 @@ const FormationInfos = (props: FormationInfosProps) => {
         if (getField(s, 'pct_aca_orig_idf') === 'NaN') return
         return (
             <li>
-                📚 <b>{Number(getField(s, 'pct_aca_orig_idf')).toFixed(0)}%</b> d'admis.e.s
-                néobachelier.e.s issu.e.s de la même académie
+                📚 <b>{Number(getField(s, 'pct_aca_orig_idf')).toFixed(0)}%</b>{' '}
+                d'admis.e.s néobachelier.e.s issu.e.s de la même académie
                 (Paris/Crétail/Versailles réunies)
             </li>
         )
@@ -53,8 +53,8 @@ const FormationInfos = (props: FormationInfosProps) => {
         if (getField(s, 'pct_etab_orig') === 'NaN') return
         return (
             <li>
-                🏢 <b>{Number(getField(s, 'pct_etab_orig')).toFixed(0)}%</b> d'admis.e.s
-                néobachelier.e.s issu.e.s du même établissement
+                🏢 <b>{Number(getField(s, 'pct_etab_orig')).toFixed(0)}%</b>{' '}
+                d'admis.e.s néobachelier.e.s issu.e.s du même établissement
             </li>
         )
     }

@@ -1,5 +1,5 @@
 import { StatsCard } from 'components'
-import { ResponsiveContainer, Pie, PieChart, Legend } from 'recharts'
+import { ResponsiveContainer, Pie, PieChart, Legend, LabelList } from 'recharts'
 
 export interface BaccalaureatMentionProps {
     count_tbf: number
@@ -12,13 +12,22 @@ export interface BaccalaureatMentionProps {
 }
 
 const BaccalaureatMention = (props: BaccalaureatMentionProps) => {
-    const { title, count_ab, count_b, count_nr, count_sm, count_tb, count_tbf } = props
+    const {
+        title,
+        count_ab,
+        count_b,
+        count_nr,
+        count_sm,
+        count_tb,
+        count_tbf,
+    } = props
 
-    const total = count_ab + count_b + count_nr + count_sm + count_tb + count_tbf
+    const total =
+        count_ab + count_b + count_nr + count_sm + count_tb + count_tbf
 
     const createLabel = (val: number): string => {
         if (!val) return ''
-        return `${val} (${((val / total) * 100).toFixed(0)}%)`
+        return `${val}` // (${((val / total) * 100).toFixed(0)}%)`
     }
 
     const data = [
@@ -69,11 +78,20 @@ const BaccalaureatMention = (props: BaccalaureatMentionProps) => {
                         cx="50%"
                         cy="50%"
                         isAnimationActive={false}
+                        innerRadius={40}
                         outerRadius={80}
                         dataKey="value"
-                        label
+                        labelLine={false}
                     >
-                        {/* <LabelList position="inside" offset={10} fill="#000" stroke="none" dataKey="label" /> */}
+                        <LabelList
+                            position="outside"
+                            fontSize={20}
+                            offset={6}
+                            fill="#000"
+                            stroke="#000"
+                            strokeWidth={1}
+                            dataKey="label"
+                        />
                     </Pie>
                     <Legend
                         iconSize={10}
