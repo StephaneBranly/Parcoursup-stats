@@ -1,0 +1,16 @@
+@import '../../theme/theme.scss';
+
+.pcs-findformation-fragment {
+    display: flex;
+    flex: 1 1;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pcs-findformation-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: $unit * 2;
+}

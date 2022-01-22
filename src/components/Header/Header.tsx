@@ -32,8 +32,9 @@ const Header = (props: HeaderProps) => {
     ]
 
     const renderViewButtons = () => {
-        return views.map((view) => (
+        return views.map((view, index) => (
             <div
+                key={index}
                 onClick={() => setView(view.value)}
                 className={`pcs-header-view-button ${
                     currentView === view.value ? 'active' : ''

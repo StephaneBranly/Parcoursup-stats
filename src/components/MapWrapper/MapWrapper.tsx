@@ -6,14 +6,13 @@ import Map from 'ol/Map'
 import View from 'ol/View'
 import VectorSource from 'ol/source/Vector'
 import Geometry from 'ol/geom/Geometry'
-import { Feature, MapBrowserEvent } from 'ol'
-import Point from 'ol/geom/Point'
-import { transform } from 'ol/proj'
+import { MapBrowserEvent } from 'ol'
 
 import clusterLayer from './clusterLayer'
 import clusterSource from './clusterSource'
-import osmLayer from './osmLayer'
+import rasterLayer from './rasterLayer'
 import { clickMap } from 'utils'
+import { loadFeatures } from './loadFeatures'
 
 export interface MapWrapperProps {
     schoolsData: Record<string, any>[]
@@ -32,7 +31,7 @@ const MapWrapper = (props: MapWrapperProps) => {
 
         const initialMap = new Map({
             target: mapElement.current ?? undefined,
-            layers: [osmLayer(), clusterLayer(clusterSource(new_source))],
+            layers: [rasterLayer(), clusterLayer(clusterSource(new_source))],
             view: new View({
                 projection: 'EPSG:3857',
                 center: [0, 0],
@@ -51,38 +50,17 @@ const MapWrapper = (props: MapWrapperProps) => {
         // save map and vector layer references to state
         setMap(initialMap)
         setSource(new_source)
+        if (props.schoolsData.length)
+            loadFeatures(new_source, initialMap, props.schoolsData)
     }, [])
 
     useEffect(() => {
-        if (!source || props.schoolsData.length === 0) return
-
-        const features = props.schoolsData
-            .filter((entry) => {
-                return entry['g_olocalisation_des_formations'] !== undefined
-            })
-            .map((entry) => {
-                const coord = entry['g_olocalisation_des_formations']
-                const feat = new Feature({
-                    geometry: new Point(
-                        transform(coord.reverse(), 'EPSG:4326', 'EPSG:3857')
-                    ),
-                })
-                feat.setProperties({ ...entry })
-                return feat
-            })
-
-        if (!features) return
-        source.clear()
-        source.addFeatures(features)
-        if (!map) return
-        map.getView().fit(source.getExtent(), {
-            padding: [100, 100, 100, 100],
-        })
+        if (!source || !map || props.schoolsData.length === 0) return
+        loadFeatures(source, map, props.schoolsData)
     }, [props.schoolsData])
 
     return (
         <div className="pcs-map-fragment">
-            <h1 className="pcs-map-title">Carte des formations</h1>
             <div className="pcs-map-container">
                 <div ref={mapElement} className="pcs-map"></div>
             </div>

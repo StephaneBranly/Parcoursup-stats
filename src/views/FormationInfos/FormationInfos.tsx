@@ -32,7 +32,7 @@ const FormationInfos = (props: FormationInfosProps) => {
                     group !== ''
             )
             .map(([index, rank, group]) => (
-                <li>
+                <li key={index}>
                     {group} : <b>{rank}ème</b>
                 </li>
             ))
@@ -85,7 +85,7 @@ const FormationInfos = (props: FormationInfosProps) => {
                 <h1 className="pcs-schoolname">
                     {getField(s, 'fil_lib_voe_acc')}
                 </h1>
-                <p>
+                <div>
                     <ul className="pcs-stats-ul">
                         <li>🗂 {getField(s, 'select_form')}</li>
                         <li>
@@ -97,10 +97,10 @@ const FormationInfos = (props: FormationInfosProps) => {
                             {getField(s, 'region_etab_aff')}
                         </li>
                     </ul>
-                </p>
+                </div>
             </div>
             <div className="pcs-formationinfos-stats">
-                <p>
+                <div>
                     <b>En 2021 :</b>
                     <ul className="pcs-stats-ul">
                         <li>
@@ -118,7 +118,7 @@ const FormationInfos = (props: FormationInfosProps) => {
 
                         {renderSameSchool()}
                     </ul>
-                </p>
+                </div>
             </div>
 
             <div className="pcs-formationinfo-statscard-wrapper">

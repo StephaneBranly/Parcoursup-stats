@@ -6,7 +6,7 @@ import StatsCard from './StatsCard/StatsCard'
 import BaccalaureatMention from './BaccalaureatMention/BaccalaureatMention'
 import FillingSpeed from './FillingSpeed/FillingSpeed'
 import About from './About/About'
-
+import SearchBar from './SearchBar/SearchBar'
 export {
     Header,
     MapWrapper,
@@ -16,4 +16,5 @@ export {
     BaccalaureatMention,
     FillingSpeed,
     About,
+    SearchBar,
 }

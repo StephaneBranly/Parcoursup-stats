@@ -14,7 +14,9 @@ const StatsCard = (props: StatsCardProps) => {
             <div className="pcs-statscard-content">
                 {children}
                 {description && (
-                    <p className="pcs-statscard-description">{description}</p>
+                    <div className="pcs-statscard-description">
+                        {description}
+                    </div>
                 )}
             </div>
         </div>

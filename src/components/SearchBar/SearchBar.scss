@@ -1,0 +1,32 @@
+@import '../../theme/theme.scss';
+
+.pcs-searchbar {
+    background-color: $blue3;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+    padding: $unit;
+    flex-direction: row;
+    border-radius: $unit * 2;
+    gap: $unit;
+}
+
+.pcs-searchbar-input {
+    display: flex;
+    flex: 1 1 auto;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    color: $farine;
+
+    &:focus {
+        box-shadow: none !important;
+        outline: none;
+    }
+}
+
+.pcs-searchbar-button {
+    display: flex;
+    color: $farine;
+    height: max-content;
+}
