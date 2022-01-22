@@ -13,6 +13,7 @@ h1 {
     margin: $unit * 5 $unit * 5;
     flex-wrap: wrap;
     gap: $unit * 5;
+    padding-bottom: $unit * 2;
 }
 
 @media (max-width: 480px) {

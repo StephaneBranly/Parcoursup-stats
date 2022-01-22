@@ -10,6 +10,7 @@
     flex-direction: row;
     border-radius: $unit * 2;
     gap: $unit;
+    height: min-content;
 }
 
 .pcs-searchbar-input {

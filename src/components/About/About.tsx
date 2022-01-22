@@ -30,15 +30,17 @@ const About = () => {
             <div className="pcs-about-made-by">
                 Application développée par Stéphane BRANLY (J'ai dev ça)
             </div>
-            <div
-                className="pcs-about-tags"
-                onClick={() =>
-                    openLink(
-                        'https://github.com/StephaneBranly/parcoursup-stats'
-                    )
-                }
-            >
-                <div className="pcs-about-repo">Dépot de code 💻</div>
+            <div className="pcs-about-tags">
+                <div
+                    className="pcs-about-repo"
+                    onClick={() =>
+                        openLink(
+                            'https://github.com/StephaneBranly/parcoursup-stats'
+                        )
+                    }
+                >
+                    Dépot de code 💻
+                </div>
                 <div
                     className="pcs-about-sponsor"
                     onClick={() =>

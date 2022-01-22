@@ -14,6 +14,9 @@ function App() {
         Record<string, any> | undefined
     >()
     const [schoolsData, setSchoolsData] = useState<Record<string, any>[]>([])
+    const [allSchoolsData, setAllSchoolsData] = useState<Record<string, any>[]>(
+        []
+    )
 
     const loadSchool = async (schoolID: string) => {
         const result = await loadFormationData(schoolID)
@@ -23,7 +26,12 @@ function App() {
 
     const [currentQuery, setCurrentQuery] = useState<string>('')
     const loadData = async (query?: string) => {
-        const result = await loadFormations(query)
+        let result: Record<string, any>[] = []
+        if (!query && allSchoolsData.length > 0) result = allSchoolsData
+        else {
+            result = await loadFormations(query)
+            if (!query) setAllSchoolsData(result)
+        }
         setCurrentQuery(query ?? '')
         setSchoolsData(result)
     }

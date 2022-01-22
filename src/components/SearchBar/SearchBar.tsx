@@ -12,7 +12,7 @@ const SearchBar = (props: SearchBarProps) => {
 
     const [value, setValue] = useState<string>(currentQuery)
 
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             loadFormations(value)
         }
@@ -26,6 +26,7 @@ const SearchBar = (props: SearchBarProps) => {
                 className="pcs-searchbar-input"
                 type="text"
                 placeholder="Rechercher"
+                onKeyPress={handleKeyDown}
             />
             <MdSearch
                 className="pcs-searchbar-button"
