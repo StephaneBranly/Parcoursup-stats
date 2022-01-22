@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/parcoursup-stats/static/css/main.80fc7f06.chunk.css",
-    "main.js": "/parcoursup-stats/static/js/main.ec05a9f6.chunk.js",
-    "main.js.map": "/parcoursup-stats/static/js/main.ec05a9f6.chunk.js.map",
-    "runtime-main.js": "/parcoursup-stats/static/js/runtime-main.0e119bed.js",
-    "runtime-main.js.map": "/parcoursup-stats/static/js/runtime-main.0e119bed.js.map",
-    "static/js/2.26c7d204.chunk.js": "/parcoursup-stats/static/js/2.26c7d204.chunk.js",
-    "static/js/2.26c7d204.chunk.js.map": "/parcoursup-stats/static/js/2.26c7d204.chunk.js.map",
-    "static/js/3.d08d0736.chunk.js": "/parcoursup-stats/static/js/3.d08d0736.chunk.js",
-    "static/js/3.d08d0736.chunk.js.map": "/parcoursup-stats/static/js/3.d08d0736.chunk.js.map",
+    "main.css": "/parcoursup-stats/static/css/main.a1e41064.chunk.css",
+    "main.js": "/parcoursup-stats/static/js/main.d0e2ed26.chunk.js",
+    "main.js.map": "/parcoursup-stats/static/js/main.d0e2ed26.chunk.js.map",
+    "runtime-main.js": "/parcoursup-stats/static/js/runtime-main.a343bbc5.js",
+    "runtime-main.js.map": "/parcoursup-stats/static/js/runtime-main.a343bbc5.js.map",
+    "static/js/2.eee2f9af.chunk.js": "/parcoursup-stats/static/js/2.eee2f9af.chunk.js",
+    "static/js/2.eee2f9af.chunk.js.map": "/parcoursup-stats/static/js/2.eee2f9af.chunk.js.map",
+    "static/js/3.7af82ea4.chunk.js": "/parcoursup-stats/static/js/3.7af82ea4.chunk.js",
+    "static/js/3.7af82ea4.chunk.js.map": "/parcoursup-stats/static/js/3.7af82ea4.chunk.js.map",
     "index.html": "/parcoursup-stats/index.html",
-    "static/css/main.80fc7f06.chunk.css.map": "/parcoursup-stats/static/css/main.80fc7f06.chunk.css.map",
-    "static/js/2.26c7d204.chunk.js.LICENSE.txt": "/parcoursup-stats/static/js/2.26c7d204.chunk.js.LICENSE.txt",
+    "static/css/main.a1e41064.chunk.css.map": "/parcoursup-stats/static/css/main.a1e41064.chunk.css.map",
+    "static/js/2.eee2f9af.chunk.js.LICENSE.txt": "/parcoursup-stats/static/js/2.eee2f9af.chunk.js.LICENSE.txt",
     "static/media/marker.7a162fbb.svg": "/parcoursup-stats/static/media/marker.7a162fbb.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.0e119bed.js",
-    "static/js/2.26c7d204.chunk.js",
-    "static/css/main.80fc7f06.chunk.css",
-    "static/js/main.ec05a9f6.chunk.js"
+    "static/js/runtime-main.a343bbc5.js",
+    "static/js/2.eee2f9af.chunk.js",
+    "static/css/main.a1e41064.chunk.css",
+    "static/js/main.d0e2ed26.chunk.js"
   ]
 }
