@@ -7,6 +7,7 @@ import BaccalaureatMention from './BaccalaureatMention/BaccalaureatMention'
 import FillingSpeed from './FillingSpeed/FillingSpeed'
 import About from './About/About'
 import SearchBar from './SearchBar/SearchBar'
+import DistributionCandidates from './DistributionCandidates/DIstributionCandidates'
 export {
     Header,
     MapWrapper,
@@ -17,4 +18,5 @@ export {
     FillingSpeed,
     About,
     SearchBar,
+    DistributionCandidates,
 }

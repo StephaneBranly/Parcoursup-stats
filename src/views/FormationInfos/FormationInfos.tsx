@@ -1,5 +1,6 @@
 import {
     BaccalaureatMention,
+    DistributionCandidates,
     FillingSpeed,
     FunnelCandidates,
     GirlBoyProportion,
@@ -59,6 +60,16 @@ const FormationInfos = (props: FormationInfosProps) => {
             </li>
         )
     }
+    const renderBoursier = () => {
+        if (!s) return
+        if (getField(s, 'pct_bours') === 'NaN') return
+        return (
+            <li>
+                💶 <b>{Number(getField(s, 'pct_bours')).toFixed(0)}%</b>{' '}
+                d'admis.e.s néobachelier.e.s boursier.e.s
+            </li>
+        )
+    }
 
     if (!s)
         return (
@@ -110,13 +121,19 @@ const FormationInfos = (props: FormationInfosProps) => {
                         <li>
                             📄 <b>{getField(s, 'voe_tot')}</b> voeux enregistrés
                         </li>
-                        <li>
-                            <b>🗂 Rangs des derniers appelés par groupe :</b>
-                        </li>
+                        {renderRankLastCalled() &&
+                            renderRankLastCalled()!.length > 0 && (
+                                <li>
+                                    <b>
+                                        🗂 Rangs des derniers appelés par groupe
+                                        :
+                                    </b>
+                                </li>
+                            )}
                         {renderRankLastCalled()}
                         {renderSameAcademy()}
-
                         {renderSameSchool()}
+                        {renderBoursier()}
                     </ul>
                 </div>
             </div>
@@ -148,6 +165,13 @@ const FormationInfos = (props: FormationInfosProps) => {
                     count_sm={getField(s, 'acc_sansmention')}
                     count_nr={getField(s, 'acc_mention_nonrenseignee')}
                     title={'Mention au bac des néobachelier.e.s'}
+                />
+                <DistributionCandidates
+                    count_bg={getField(s, 'acc_bg')}
+                    count_bp={getField(s, 'acc_bp')}
+                    count_bt={getField(s, 'acc_bt')}
+                    count_oc={getField(s, 'acc_at')}
+                    title={'Provenance des futur.e.s étudiant.e.s'}
                 />
                 <FillingSpeed
                     count_start_pp={getField(s, 'pct_acc_debutpp')}
