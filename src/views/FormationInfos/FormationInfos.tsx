@@ -4,6 +4,7 @@ import {
     FunnelCandidates,
     GirlBoyProportion,
 } from 'components'
+import { Helmet } from 'react-helmet'
 import { getField } from 'utils'
 import './FormationInfos.scss'
 
@@ -74,6 +75,9 @@ const FormationInfos = (props: FormationInfosProps) => {
         )
     return (
         <div className="pcs-formationinfos-fragment">
+            <Helmet>
+                <title>Parcoursup - Statistiques - {getField(s, 'g_ea_lib_vx')}</title>
+            </Helmet>
             <h1 className="pcs-formationinfos-title">Informations générales</h1>
             <div className="pcs-formationinfos-main">
                 <h1 className="pcs-schoolname">

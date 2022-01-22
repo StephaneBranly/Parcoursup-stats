@@ -48,7 +48,7 @@ const Header = (props: HeaderProps) => {
         <div className="pcs-header">
             <div className="pcs-header-head">
                 <h1 className="pcs-header-title">
-                    📊 Statistiques sur la plateforme
+                    📊 Statistiques sur Parcoursup
                 </h1>
             </div>
             <div className="pcs-header-menu">{renderViewButtons()}</div>

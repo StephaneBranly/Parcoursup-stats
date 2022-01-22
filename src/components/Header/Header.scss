@@ -3,9 +3,10 @@
 .pcs-header {
     background-color: $blue3;
     display: flex;
+    text-align: center;
     justify-content: space-between;
     align-content: stretch;
-    align-items: stretch;
+    align-items: center;
     flex-direction: row;
     padding: 0 $unit * 3;
     border-radius: $unit * 3;
@@ -30,6 +31,7 @@
 }
 
 .pcs-header-menu {
+    max-width: 400px;
     display: flex;
     justify-content: space-between;
     align-content: stretch;
@@ -37,6 +39,7 @@
 }
 
 .pcs-header-view-button {
+    min-width: 100px;
     padding-top: $unit * 2;
     position: relative;
     display: flex;

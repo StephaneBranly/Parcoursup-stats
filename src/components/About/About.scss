@@ -1,0 +1,114 @@
+@import '../../theme/theme.scss';
+
+.pcs-about-closed, .pcs-about-open {
+    position: fixed;
+    bottom: 0;
+    background-color: $blue3;
+    color: $farine;
+    padding: $unit * 2;
+    text-align: center;
+    border-radius: $unit * 3;
+    margin: $unit * 5;
+}
+
+.pcs-about-closed {
+    display: flex;
+    gap: $unit * 2;
+    align-items: center;
+    justify-content: center;
+    align-content: space-between;
+}
+.pcs-about-closed div {
+    display: flex;
+}
+
+.pcs-about-button {
+    text-decoration: underline;
+
+    &:hover {
+        text-decoration-color: $red;
+        cursor: pointer;
+    }
+}
+
+
+.pcs-about-made-by {
+    padding: $unit;
+    border-radius: $unit;
+    color: $blue3;
+    background-color: $farine;
+    // width: max-content;
+    display: inline-block;
+}
+
+.pcs-about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $unit;
+    align-items: center;
+    justify-content: center;
+    margin: $unit 0;
+}
+
+.pcs-about-sponsor, .pcs-about-data, .pcs-about-repo {
+    width: max-content;
+    border-width: 3px;
+    border-style: solid;
+    padding: $unit;
+    border-radius: $unit;
+    &.pcs-about-sponsor {
+        border-color: $pink;
+        color: $pink;
+        box-shadow: 0px 0px 10px inset $pink;
+    }
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.pcs-about-close {
+    margin-bottom: $unit;
+    text-align: right;
+    margin: 0;
+
+    & > span {
+        display: inline-block;
+        background-color: $blue3;
+        padding: $unit * 2;
+        width: max-content;
+    text-decoration: underline;
+        
+    }
+    & > span:hover{
+        text-decoration-color: $red;
+        cursor: pointer;
+    }
+}
+
+.pcs-about-packages li {
+    display: inline-block;
+    margin: 3px;
+    background-color: $blue1;
+    color: $blue3;
+
+    &:hover {
+        box-shadow: 0 -3px 0 inset $farine;
+        cursor: pointer;
+    }
+}
+
+.pcs-about-packages-label {
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 480px) {
+    .pcs-about-closed, .pcs-about-open {
+        margin: 0;
+        left: 0;
+        right: 0;
+        border-radius: $unit * 2 $unit * 2 0 0;
+    }
+}

@@ -4,7 +4,7 @@ import './App.scss'
 
 import { Helmet } from 'react-helmet'
 
-import { Header, MapWrapper } from 'components'
+import { About, Header, MapWrapper } from 'components'
 import { parcoursupAPI } from 'global/parcoursupAPI'
 import axios from 'axios'
 import { loadFormationData } from 'utils'
@@ -23,10 +23,6 @@ function App() {
         setSelectedSchool(result)
     }
 
-    useEffect(() => {
-        loadData()
-    }, [])
-
     const loadData = async () => {
         try {
             let finished = false
@@ -34,7 +30,7 @@ function App() {
             while (!finished) {
                 const requestURL =
                     parcoursupAPI +
-                    `&q=&rows=10000&start=${dataLength}&fields=cod_aff_form,g_ea_lib_vx,g_olocalisation_des_formations`
+                    `&q=&rows=100&start=${dataLength}&fields=cod_aff_form,g_ea_lib_vx,g_olocalisation_des_formations`
                 const result = await axios.get(requestURL)
                 if (result.data) {
                     dataLength += result.data.records.length
@@ -72,7 +68,7 @@ function App() {
                 return <FormationInfos currentSchool={selectedSchool} />
             default:
                 return (
-                    <p>Seems like you something is broken :( Reload the page</p>
+                    <p>Seems like something is broken :( Reload the page</p>
                 )
         }
     }
@@ -88,6 +84,7 @@ function App() {
             </Helmet>
             <Header currentView={currentView} setView={setCurrentView} />
             <section className="pcs-main-section">{renderView()}</section>
+            <About />
         </section>
     )
 }

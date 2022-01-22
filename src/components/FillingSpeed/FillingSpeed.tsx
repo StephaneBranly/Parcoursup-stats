@@ -42,7 +42,7 @@ const FillingSpeed = (props: FillingSpeedProps) => {
         <ul style={{ textAlign: 'left' }}>
             <li>27 mai : ouverture de Parcoursup</li>
             <li>17 juin : avant le baccalauréat</li>
-            <li>16 juillet : Fin de procédure Phase Principale</li>
+            <li>16 juillet : fin de procédure Phase Principale</li>
         </ul>
     )
 
