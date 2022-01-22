@@ -1,6 +1,7 @@
 @import '../../theme/theme.scss';
 
-.pcs-about-closed, .pcs-about-open {
+.pcs-about-closed,
+.pcs-about-open {
     position: fixed;
     bottom: 0;
     background-color: $blue3;
@@ -31,7 +32,6 @@
     }
 }
 
-
 .pcs-about-made-by {
     padding: $unit;
     border-radius: $unit;
@@ -50,7 +50,9 @@
     margin: $unit 0;
 }
 
-.pcs-about-sponsor, .pcs-about-data, .pcs-about-repo {
+.pcs-about-sponsor,
+.pcs-about-data,
+.pcs-about-repo {
     width: max-content;
     border-width: 3px;
     border-style: solid;
@@ -78,10 +80,9 @@
         background-color: $blue3;
         padding: $unit * 2;
         width: max-content;
-    text-decoration: underline;
-        
+        text-decoration: underline;
     }
-    & > span:hover{
+    & > span:hover {
         text-decoration-color: $red;
         cursor: pointer;
     }
@@ -105,7 +106,8 @@
 }
 
 @media (max-width: 480px) {
-    .pcs-about-closed, .pcs-about-open {
+    .pcs-about-closed,
+    .pcs-about-open {
         margin: 0;
         left: 0;
         right: 0;

@@ -67,9 +67,7 @@ function App() {
             case 'seeFormationInfos':
                 return <FormationInfos currentSchool={selectedSchool} />
             default:
-                return (
-                    <p>Seems like something is broken :( Reload the page</p>
-                )
+                return <p>Seems like something is broken :( Reload the page</p>
         }
     }
 

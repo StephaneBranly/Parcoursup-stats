@@ -1,4 +1,4 @@
-import { moduleNames } from "./moduleNames";
-import { parcoursupAPI} from "./parcoursupAPI"
+import { moduleNames } from './moduleNames'
+import { parcoursupAPI } from './parcoursupAPI'
 
 export { moduleNames, parcoursupAPI }
