@@ -1,4 +1,3 @@
-export const toRad = (value: number)  =>
-{
-    return value * Math.PI / 180;
+export const toRad = (value: number) => {
+    return (value * Math.PI) / 180
 }

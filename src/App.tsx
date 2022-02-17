@@ -17,22 +17,26 @@ function App() {
     const [allSchoolsData, setAllSchoolsData] = useState<Record<string, any>[]>(
         []
     )
-    const [disabledViews, setDisabledViews] = useState<string[]>(['seeFormationInfos'])
-    
+    const [disabledViews, setDisabledViews] = useState<string[]>([
+        'seeFormationInfos',
+    ])
+
     const loadSchool = async (schoolID: string) => {
         const result = await loadFormationData(schoolID)
         console.log(result)
         setSelectedSchool(result)
-        if (result) 
-            setDisabledViews(disabledViews.filter((a) => a !== 'seeFormationInfos'))
-        else 
-            setDisabledViews(disabledViews.concat('seeFormationInfos'))
+        if (result)
+            setDisabledViews(
+                disabledViews.filter((a) => a !== 'seeFormationInfos')
+            )
+        else setDisabledViews(disabledViews.concat('seeFormationInfos'))
     }
 
     const [currentQuery, setCurrentQuery] = useState<string>('')
     const [currentQueryState, setCurrentQueryState] = useState<number>(0)
 
-    const incrementQueryState = () => setCurrentQueryState(currentQueryState + 1)
+    const incrementQueryState = () =>
+        setCurrentQueryState(currentQueryState + 1)
 
     const loadData = async (query?: string) => {
         incrementQueryState()
@@ -41,14 +45,20 @@ function App() {
         var queryState = -1
         if (!query && allSchoolsData.length > 0) result = allSchoolsData
         else {
-            const [responseResult, responseQueryState] = await loadFormations(Number(currentQueryState), query)
+            const [responseResult, responseQueryState] = await loadFormations(
+                Number(currentQueryState),
+                query
+            )
             queryState = responseQueryState
             result = responseResult
             if (!query) setAllSchoolsData(result)
         }
         setCurrentQuery(query ?? '')
 
-        if ((!query && schoolsData.length === 0) || queryState === currentQueryState)
+        if (
+            (!query && schoolsData.length === 0) ||
+            queryState === currentQueryState
+        )
             setSchoolsData(result)
     }
 
@@ -84,7 +94,11 @@ function App() {
                     content="Visualiseur des données publiques de Parcoursup"
                 />
             </Helmet>
-            <Header currentView={currentView} setView={setCurrentView} disabledViews={disabledViews}/>
+            <Header
+                currentView={currentView}
+                setView={setCurrentView}
+                disabledViews={disabledViews}
+            />
             <section className="pcs-main-section">{renderView()}</section>
             <About />
         </section>

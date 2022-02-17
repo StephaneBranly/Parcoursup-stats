@@ -22,5 +22,5 @@ export {
     SearchBar,
     DistributionCandidates,
     FormationList,
-    FormationItem
+    FormationItem,
 }

@@ -14,7 +14,17 @@ const FormationItem = (props: FormationItemProps) => {
         loadSchool(schoolData['cod_aff_form'])
         setView('seeFormationInfos')
     }
-    return <li className='pcs-formationItem' onClick={handleClick}><b>{getField(schoolData, 'fil_lib_voe_acc')}</b> - {getField(schoolData,'g_ea_lib_vx')} {getField(schoolData,'detail_forma') !== 'NaN' ? <em>- {getField(schoolData,'detail_forma')}</em> : ''}</li>
+    return (
+        <li className="pcs-formationItem" onClick={handleClick}>
+            <b>{getField(schoolData, 'fil_lib_voe_acc')}</b> -{' '}
+            {getField(schoolData, 'g_ea_lib_vx')}{' '}
+            {getField(schoolData, 'detail_forma') !== 'NaN' ? (
+                <em>- {getField(schoolData, 'detail_forma')}</em>
+            ) : (
+                ''
+            )}
+        </li>
+    )
 }
 
 export default FormationItem

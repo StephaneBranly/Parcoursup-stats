@@ -16,5 +16,5 @@ export {
     openLink,
     loadFormations,
     calculateDistance,
-    toRad
+    toRad,
 }

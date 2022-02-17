@@ -13,7 +13,10 @@ export const loadFormations = async (
             }&rows=-1&fields=cod_aff_form,g_ea_lib_vx,g_olocalisation_des_formations,fil_lib_voe_acc,detail_forma`
         const result = await axios.get(requestURL)
         if (result.data)
-            return [result.data.records.map((r: { fields: any }) => r.fields), state]
+            return [
+                result.data.records.map((r: { fields: any }) => r.fields),
+                state,
+            ]
         return [[], state]
     } catch (e) {
         console.error('error when loading Parcoursup data...')
