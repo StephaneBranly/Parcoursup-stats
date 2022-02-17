@@ -7,7 +7,9 @@ import BaccalaureatMention from './BaccalaureatMention/BaccalaureatMention'
 import FillingSpeed from './FillingSpeed/FillingSpeed'
 import About from './About/About'
 import SearchBar from './SearchBar/SearchBar'
-import DistributionCandidates from './DistributionCandidates/DIstributionCandidates'
+import DistributionCandidates from './DistributionCandidates/DistributionCandidates'
+import FormationList from './FormationList/FormationList'
+import FormationItem from './FormationItem/FormationItem'
 export {
     Header,
     MapWrapper,
@@ -19,4 +21,6 @@ export {
     About,
     SearchBar,
     DistributionCandidates,
+    FormationList,
+    FormationItem
 }

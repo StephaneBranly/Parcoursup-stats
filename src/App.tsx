@@ -17,23 +17,39 @@ function App() {
     const [allSchoolsData, setAllSchoolsData] = useState<Record<string, any>[]>(
         []
     )
-
+    const [disabledViews, setDisabledViews] = useState<string[]>(['seeFormationInfos'])
+    
     const loadSchool = async (schoolID: string) => {
         const result = await loadFormationData(schoolID)
         console.log(result)
         setSelectedSchool(result)
+        if (result) 
+            setDisabledViews(disabledViews.filter((a) => a !== 'seeFormationInfos'))
+        else 
+            setDisabledViews(disabledViews.concat('seeFormationInfos'))
     }
 
     const [currentQuery, setCurrentQuery] = useState<string>('')
+    const [currentQueryState, setCurrentQueryState] = useState<number>(0)
+
+    const incrementQueryState = () => setCurrentQueryState(currentQueryState + 1)
+
     const loadData = async (query?: string) => {
+        incrementQueryState()
+
         let result: Record<string, any>[] = []
+        var queryState = -1
         if (!query && allSchoolsData.length > 0) result = allSchoolsData
         else {
-            result = await loadFormations(query)
+            const [responseResult, responseQueryState] = await loadFormations(Number(currentQueryState), query)
+            queryState = responseQueryState
+            result = responseResult
             if (!query) setAllSchoolsData(result)
         }
         setCurrentQuery(query ?? '')
-        setSchoolsData(result)
+
+        if ((!query && schoolsData.length === 0) || queryState === currentQueryState)
+            setSchoolsData(result)
     }
 
     useEffect(() => {
@@ -49,6 +65,7 @@ function App() {
                         loadSchool={loadSchool}
                         loadFormations={loadData}
                         currentQuery={currentQuery}
+                        setView={setCurrentView}
                     />
                 )
             case 'seeFormationInfos':
@@ -67,7 +84,7 @@ function App() {
                     content="Visualiseur des données publiques de Parcoursup"
                 />
             </Helmet>
-            <Header currentView={currentView} setView={setCurrentView} />
+            <Header currentView={currentView} setView={setCurrentView} disabledViews={disabledViews}/>
             <section className="pcs-main-section">{renderView()}</section>
             <About />
         </section>

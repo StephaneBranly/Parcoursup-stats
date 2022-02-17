@@ -79,7 +79,7 @@ const FormationInfos = (props: FormationInfosProps) => {
                 </h1>
                 <div className="pcs-formationinfos-main">
                     <h1 className="pcs-schoolname">
-                        Selectionnez une formation
+                        Recherchez une formation pour visualiser ses informations
                     </h1>
                 </div>
             </div>
@@ -98,7 +98,7 @@ const FormationInfos = (props: FormationInfosProps) => {
                 </h1>
                 <div>
                     <ul className="pcs-stats-ul">
-                        <li>🗂 {getField(s, 'select_form')}</li>
+                        <li>🗂 {getField(s,'detail_forma') !== 'NaN' ? <em>{getField(s,'detail_forma')} - </em> : ''}{getField(s, 'select_form')}</li>
                         <li>
                             🏢 {getField(s, 'g_ea_lib_vx')} -{' '}
                             <i>{getField(s, 'contrat_etab')}</i>

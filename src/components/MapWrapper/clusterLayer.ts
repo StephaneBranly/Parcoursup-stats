@@ -42,7 +42,7 @@ const clusterLayer = (clusterSource: any) => {
                                     color: '#e63946',
                                 }),
                                 fill: new Fill({
-                                    color: '#1d3557',
+                                    color: '#0e2950',
                                 }),
                             }),
                             text: new Text({

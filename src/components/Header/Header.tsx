@@ -6,10 +6,11 @@ import { FaSchool } from 'react-icons/fa'
 export interface HeaderProps {
     currentView: string
     setView: (newView: string) => void
+    disabledViews: string[]
 }
 
 const Header = (props: HeaderProps) => {
-    const { currentView, setView } = props
+    const { currentView, setView, disabledViews } = props
 
     const views = [
         {
@@ -38,7 +39,7 @@ const Header = (props: HeaderProps) => {
                 onClick={() => setView(view.value)}
                 className={`pcs-header-view-button ${
                     currentView === view.value ? 'active' : ''
-                }`}
+                } ${disabledViews.includes(view.value) ? 'disabled' : ''}`}
             >
                 <div className="pcs-header-view-button-icon">{view.icon}</div>
                 <div className="pcs-header-view-button-name">{view.label}</div>

@@ -39,7 +39,7 @@ const DistributionCandidates = (props: DistributionCandidatesProps) => {
         {
             name: 'Autres candidat.e.s',
             value: count_oc,
-            fill: '#1d3557',
+            fill: '#0e2950',
             label: createLabel(count_oc),
         },
     ]

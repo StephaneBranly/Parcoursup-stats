@@ -19,7 +19,8 @@ export interface FillingSpeedProps {
 const FillingSpeed = (props: FillingSpeedProps) => {
     const { title, count_bac, count_end_pp, count_start_pp } = props
 
-    const renderLabel = (value: number): string => `${value.toFixed(0)}%`
+    const renderLabel = (value: number): string => Number.isFinite(value) ? `${value.toFixed(0)}%` : ''
+
     const data = [
         {
             name: '27 mai',
@@ -64,8 +65,8 @@ const FillingSpeed = (props: FillingSpeedProps) => {
                     <Area
                         type="linear"
                         dataKey="value"
-                        stroke="#1d3557"
-                        fill="#1d3557"
+                        stroke="#0e2950"
+                        fill="#0e2950"
                         isAnimationActive={false}
                     >
                         <LabelList

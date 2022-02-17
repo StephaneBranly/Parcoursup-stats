@@ -28,7 +28,7 @@ const About = () => {
                 <span onClick={() => setOpen(false)}>fermer</span>
             </div>
             <div className="pcs-about-made-by">
-                Application développée par Stéphane BRANLY (J'ai dev ça)
+                Application développée par Stéphane BRANLY
             </div>
             <div className="pcs-about-tags">
                 <div

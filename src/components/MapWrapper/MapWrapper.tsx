@@ -18,6 +18,7 @@ export interface MapWrapperProps {
     schoolsData: Record<string, any>[]
     loadSchool: (schoolID: string) => void
     dataAttribution: string
+    setCoordProximity: (coord: number[]) => void
 }
 
 const MapWrapper = (props: MapWrapperProps) => {
@@ -44,7 +45,8 @@ const MapWrapper = (props: MapWrapperProps) => {
             clickMap(
                 e as MapBrowserEvent<UIEvent>,
                 initialMap,
-                props.loadSchool
+                props.loadSchool,
+                props.setCoordProximity
             )
         )
         // save map and vector layer references to state

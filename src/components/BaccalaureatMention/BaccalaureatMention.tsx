@@ -58,7 +58,7 @@ const BaccalaureatMention = (props: BaccalaureatMentionProps) => {
         {
             name: 'Sans mention',
             value: count_sm,
-            fill: '#1d3557',
+            fill: '#0e2950',
             label: createLabel(count_sm),
         },
         {

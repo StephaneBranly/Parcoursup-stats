@@ -10,7 +10,7 @@
     flex-direction: row;
     border-radius: $unit * 2;
     gap: $unit;
-    height: min-content;
+    height: max-content;
 }
 
 .pcs-searchbar-input {
@@ -19,7 +19,7 @@
     background-color: rgba(0, 0, 0, 0);
     border: 0;
     color: $farine;
-
+    padding: $unit;
     &:focus {
         box-shadow: none !important;
         outline: none;

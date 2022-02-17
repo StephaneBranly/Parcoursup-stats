@@ -55,6 +55,13 @@
         border-radius: $unit * 2 $unit * 2 0 0;
         color: $blue3;
     }
+    &.disabled {
+        color: #aaa;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 .pcs-header-view-button-icon {
     display: flex;
