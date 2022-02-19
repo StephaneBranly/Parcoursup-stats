@@ -1,7 +1,7 @@
 @import '../../theme/theme.scss';
 
 .pcs-statscard {
-    min-width: 300px;
+    min-width: 30vw;
 }
 .pcs-statscard-title {
     color: $blue3;
@@ -19,4 +19,10 @@
     background-color: $blue1;
     border-radius: $unit * 2;
     padding: $unit;
+}
+
+@media (max-width: 480px) {
+    .pcs-statscard {
+        min-width: 90vw;
+    }
 }

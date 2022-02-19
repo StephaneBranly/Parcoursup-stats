@@ -5,7 +5,7 @@ import './FindFormation.scss'
 
 export interface FindFormationProps {
     schoolsData: Record<string, any>[]
-    loadSchool: (schoolID: string) => void
+    loadSchool: (schoolID: string) => Promise<void>
     loadFormations: (query?: string) => void
     currentQuery: string
     setView: (view: string) => void

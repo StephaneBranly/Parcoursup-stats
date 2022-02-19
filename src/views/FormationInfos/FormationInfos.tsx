@@ -89,7 +89,7 @@ const FormationInfos = (props: FormationInfosProps) => {
         <div className="pcs-formationinfos-fragment">
             <Helmet>
                 <title>
-                    Parcoursup - Statistiques - {getField(s, 'g_ea_lib_vx')}
+                    Parcoursup - Statistiques - {getField(s, 'g_ea_lib_vx')} - {getField(s, 'fil_lib_voe_acc')}
                 </title>
             </Helmet>
             <h1 className="pcs-formationinfos-title">Informations générales</h1>

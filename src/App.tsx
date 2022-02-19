@@ -17,19 +17,19 @@ function App() {
     const [allSchoolsData, setAllSchoolsData] = useState<Record<string, any>[]>(
         []
     )
-    const [disabledViews, setDisabledViews] = useState<string[]>([
-        'seeFormationInfos',
-    ])
+    const [schoolsCache, setSchoolCache] = useState<Record<string, Record<string, any>>>({})
 
     const loadSchool = async (schoolID: string) => {
-        const result = await loadFormationData(schoolID)
-        console.log(result)
-        setSelectedSchool(result)
-        if (result)
-            setDisabledViews(
-                disabledViews.filter((a) => a !== 'seeFormationInfos')
-            )
-        else setDisabledViews(disabledViews.concat('seeFormationInfos'))
+        if (Object.keys(schoolsCache).includes(schoolID))
+            setSelectedSchool(schoolsCache[schoolID])
+        else
+        {
+            const result = await loadFormationData(schoolID)
+            setSelectedSchool(result)
+            const newCache: Record<string, Record<string, any>> = Object.assign({}, schoolsCache);
+            newCache[schoolID] = result
+            setSchoolCache(newCache)
+        }
     }
 
     const [currentQuery, setCurrentQuery] = useState<string>('')
@@ -38,7 +38,7 @@ function App() {
     const incrementQueryState = () =>
         setCurrentQueryState(currentQueryState + 1)
 
-    const loadData = async (query?: string) => {
+    const loadDataFromQuery = async (query?: string) => {
         incrementQueryState()
 
         let result: Record<string, any>[] = []
@@ -63,7 +63,7 @@ function App() {
     }
 
     useEffect(() => {
-        loadData()
+        loadDataFromQuery()
     }, [])
 
     const renderView = () => {
@@ -73,13 +73,15 @@ function App() {
                     <FindFormation
                         schoolsData={schoolsData}
                         loadSchool={loadSchool}
-                        loadFormations={loadData}
+                        loadFormations={loadDataFromQuery}
                         currentQuery={currentQuery}
                         setView={setCurrentView}
                     />
                 )
             case 'seeFormationInfos':
                 return <FormationInfos currentSchool={selectedSchool} />
+            case 'compareFormations':
+                return <div>Comparaison des formations</div>
             default:
                 return <p>Seems like something is broken :( Reload the page</p>
         }
@@ -97,7 +99,6 @@ function App() {
             <Header
                 currentView={currentView}
                 setView={setCurrentView}
-                disabledViews={disabledViews}
             />
             <section className="pcs-main-section">{renderView()}</section>
             <About />

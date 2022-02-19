@@ -4,7 +4,7 @@ import './FormationList.scss'
 
 export interface FormationListProps {
     schoolsData: Record<string, any>[]
-    loadSchool: (schoolID: string) => void
+    loadSchool: (schoolID: string) => Promise<void>
     setView: (view: string) => void
     coordProximity: number[]
 }
