@@ -5,14 +5,14 @@ import './FindFormation.scss'
 
 export interface FindFormationProps {
     schoolsData: Record<string, any>[]
-    loadSchool: (schoolID: string) => Promise<void>
+    setSelectedSchool: (schoolID: string) => Promise<void>
     loadFormations: (query?: string) => void
     currentQuery: string
     setView: (view: string) => void
 }
 
 const FindFormation = (props: FindFormationProps) => {
-    const { schoolsData, loadSchool, loadFormations, currentQuery, setView } =
+    const { schoolsData, setSelectedSchool, loadFormations, currentQuery, setView } =
         props
 
     const [coordProximity, setCoordProximity] = useState<number[]>([])
@@ -30,12 +30,12 @@ const FindFormation = (props: FindFormationProps) => {
                 <MapWrapper
                     schoolsData={schoolsData}
                     dataAttribution={'Parcoursup 2021 - OpenStreetMap'}
-                    loadSchool={loadSchool}
+                    setSelectedSchool={setSelectedSchool}
                     setCoordProximity={setCoordProximity}
                 />
                 <FormationList
                     schoolsData={schoolsData}
-                    loadSchool={loadSchool}
+                    setSelectedSchool={setSelectedSchool}
                     setView={setView}
                     coordProximity={coordProximity}
                 />

@@ -3,15 +3,15 @@ import './FormationItem.scss'
 
 export interface FormationItemProps {
     schoolData: Record<string, any>
-    loadSchool: (schoolID: string) => Promise<void>
+    setSelectedSchool: (schoolID: string) => Promise<void>
     setView: (view: string) => void
 }
 
 const FormationItem = (props: FormationItemProps) => {
-    const { schoolData, loadSchool, setView } = props
+    const { schoolData, setSelectedSchool, setView } = props
 
     const handleClick = async () => {
-        await loadSchool(schoolData['cod_aff_form'])
+        await setSelectedSchool(schoolData['cod_aff_form'])
         setView('seeFormationInfos')
     }
 

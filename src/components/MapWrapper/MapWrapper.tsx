@@ -16,7 +16,7 @@ import { loadFeatures } from './loadFeatures'
 
 export interface MapWrapperProps {
     schoolsData: Record<string, any>[]
-    loadSchool: (schoolID: string) => void
+    setSelectedSchool: (schoolID: string) => Promise<void>
     dataAttribution: string
     setCoordProximity: (coord: number[]) => void
 }
@@ -45,7 +45,7 @@ const MapWrapper = (props: MapWrapperProps) => {
             clickMap(
                 e as MapBrowserEvent<UIEvent>,
                 initialMap,
-                props.loadSchool,
+                props.setSelectedSchool,
                 props.setCoordProximity
             )
         )

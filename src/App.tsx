@@ -11,7 +11,7 @@ import { FindFormation, FormationInfos } from 'views'
 function App() {
     const [currentView, setCurrentView] = useState<string>('findFormation')
     const [selectedSchool, setSelectedSchool] = useState<
-        Record<string, any> | undefined
+        string | undefined
     >()
     const [schoolsData, setSchoolsData] = useState<Record<string, any>[]>([])
     const [allSchoolsData, setAllSchoolsData] = useState<Record<string, any>[]>(
@@ -19,17 +19,19 @@ function App() {
     )
     const [schoolsCache, setSchoolCache] = useState<Record<string, Record<string, any>>>({})
 
-    const loadSchool = async (schoolID: string) => {
-        if (Object.keys(schoolsCache).includes(schoolID))
-            setSelectedSchool(schoolsCache[schoolID])
-        else
+    const loadSchool = async (schoolID: string): Promise<void> => {
+        if (!Object.keys(schoolsCache).includes(schoolID))
         {
             const result = await loadFormationData(schoolID)
-            setSelectedSchool(result)
             const newCache: Record<string, Record<string, any>> = Object.assign({}, schoolsCache);
             newCache[schoolID] = result
             setSchoolCache(newCache)
         }
+    }
+
+    const handlerSetSelectedSchool = async (schoolID: string) => {
+        if (!Object.keys(schoolsCache).includes(schoolID)) await loadSchool(schoolID)
+        setSelectedSchool(schoolID)
     }
 
     const [currentQuery, setCurrentQuery] = useState<string>('')
@@ -72,14 +74,14 @@ function App() {
                 return (
                     <FindFormation
                         schoolsData={schoolsData}
-                        loadSchool={loadSchool}
+                        setSelectedSchool={handlerSetSelectedSchool}
                         loadFormations={loadDataFromQuery}
                         currentQuery={currentQuery}
                         setView={setCurrentView}
                     />
                 )
             case 'seeFormationInfos':
-                return <FormationInfos currentSchool={selectedSchool} />
+                return <FormationInfos currentSchool={selectedSchool ? schoolsCache[selectedSchool] : {}} />
             case 'compareFormations':
                 return <div>Comparaison des formations</div>
             default:

@@ -4,13 +4,13 @@ import './FormationList.scss'
 
 export interface FormationListProps {
     schoolsData: Record<string, any>[]
-    loadSchool: (schoolID: string) => Promise<void>
+    setSelectedSchool: (schoolID: string) => Promise<void>
     setView: (view: string) => void
     coordProximity: number[]
 }
 
 const FormationList = (props: FormationListProps) => {
-    const { schoolsData, loadSchool, setView, coordProximity } = props
+    const { schoolsData, setSelectedSchool, setView, coordProximity } = props
 
     const hasKey = (entry: Record<string, any>, key: string): boolean => {
         return Object.keys(entry).includes(key)
@@ -46,7 +46,7 @@ const FormationList = (props: FormationListProps) => {
                 )
                 .map((school, index) => (
                     <FormationItem
-                        loadSchool={loadSchool}
+                        setSelectedSchool={setSelectedSchool}
                         setView={setView}
                         key={index}
                         schoolData={school}
@@ -55,7 +55,7 @@ const FormationList = (props: FormationListProps) => {
         else
             return schoolsData.map((school, index) => (
                 <FormationItem
-                    loadSchool={loadSchool}
+                    setSelectedSchool={setSelectedSchool}
                     setView={setView}
                     key={index}
                     schoolData={school}
