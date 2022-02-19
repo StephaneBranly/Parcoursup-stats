@@ -18,7 +18,13 @@ export interface FormationInfosProps {
 }
 
 const FormationInfos = (props: FormationInfosProps) => {
-    const { currentSchool, setView, toggleComparedSchool, comparedSchools, schoolID } = props
+    const {
+        currentSchool,
+        setView,
+        toggleComparedSchool,
+        comparedSchools,
+        schoolID,
+    } = props
     const s = currentSchool
 
     const renderRankLastCalled = () => {
@@ -81,7 +87,10 @@ const FormationInfos = (props: FormationInfosProps) => {
                 <h1 className="pcs-formationinfos-title">
                     Informations générales
                 </h1>
-                <div className="pcs-formationinfos-main clickable" onClick={() => setView('findFormation')}>
+                <div
+                    className="pcs-formationinfos-main clickable"
+                    onClick={() => setView('findFormation')}
+                >
                     <h1 className="pcs-schoolname">
                         🔍 Recherchez une formation pour visualiser ses
                         informations
@@ -93,11 +102,16 @@ const FormationInfos = (props: FormationInfosProps) => {
         <div className="pcs-formationinfos-fragment">
             <Helmet>
                 <title>
-                    Parcoursup - Statistiques - {getField(s, 'g_ea_lib_vx')} - {getField(s, 'fil_lib_voe_acc')}
+                    Parcoursup - Statistiques - {getField(s, 'g_ea_lib_vx')} -{' '}
+                    {getField(s, 'fil_lib_voe_acc')}
                 </title>
             </Helmet>
-            <div className='pcs-formationinfos-compared'>
-                <button onClick={() => toggleComparedSchool(schoolID)}>{comparedSchools.includes(schoolID) ? 'Retirer du comparateur' : "Ajouter au comparateur"}</button>
+            <div className="pcs-formationinfos-compared">
+                <button onClick={() => toggleComparedSchool(schoolID)}>
+                    {comparedSchools.includes(schoolID)
+                        ? 'Retirer du comparateur'
+                        : 'Ajouter au comparateur'}
+                </button>
             </div>
             <h1 className="pcs-formationinfos-title">Informations générales</h1>
             <div className="pcs-formationinfos-main">

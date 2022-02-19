@@ -10,28 +10,31 @@ import { CompareFormations, FindFormation, FormationInfos } from 'views'
 
 function App() {
     const [currentView, setCurrentView] = useState<string>('findFormation')
-    const [selectedSchool, setSelectedSchool] = useState<
-        string | undefined
-    >()
+    const [selectedSchool, setSelectedSchool] = useState<string | undefined>()
     const [comparedSchools, setComparedSchools] = useState<string[]>([])
     const [schoolsData, setSchoolsData] = useState<Record<string, any>[]>([])
     const [allSchoolsData, setAllSchoolsData] = useState<Record<string, any>[]>(
         []
     )
-    const [schoolsCache, setSchoolCache] = useState<Record<string, Record<string, any>>>({})
+    const [schoolsCache, setSchoolCache] = useState<
+        Record<string, Record<string, any>>
+    >({})
 
     const loadSchool = async (schoolID: string): Promise<void> => {
-        if (!Object.keys(schoolsCache).includes(schoolID))
-        {
+        if (!Object.keys(schoolsCache).includes(schoolID)) {
             const result = await loadFormationData(schoolID)
-            const newCache: Record<string, Record<string, any>> = Object.assign({}, schoolsCache);
+            const newCache: Record<string, Record<string, any>> = Object.assign(
+                {},
+                schoolsCache
+            )
             newCache[schoolID] = result
             setSchoolCache(newCache)
         }
     }
 
     const handlerSetSelectedSchool = async (schoolID: string) => {
-        if (!Object.keys(schoolsCache).includes(schoolID)) await loadSchool(schoolID)
+        if (!Object.keys(schoolsCache).includes(schoolID))
+            await loadSchool(schoolID)
         setSelectedSchool(schoolID)
     }
 
@@ -71,7 +74,8 @@ function App() {
 
     const toggleComparedSchool = (schoolID: string) => {
         if (!Object.keys(schoolsCache).includes(schoolID)) loadSchool(schoolID)
-        if (comparedSchools.includes(schoolID)) setComparedSchools(comparedSchools.filter((s) => s !== schoolID))
+        if (comparedSchools.includes(schoolID))
+            setComparedSchools(comparedSchools.filter((s) => s !== schoolID))
         else setComparedSchools(comparedSchools.concat(schoolID))
     }
 
@@ -88,9 +92,27 @@ function App() {
                     />
                 )
             case 'seeFormationInfos':
-                return <FormationInfos currentSchool={selectedSchool ? schoolsCache[selectedSchool] : undefined} setView={setCurrentView} comparedSchools={comparedSchools} toggleComparedSchool={toggleComparedSchool} schoolID={selectedSchool ?? ""} />
+                return (
+                    <FormationInfos
+                        currentSchool={
+                            selectedSchool
+                                ? schoolsCache[selectedSchool]
+                                : undefined
+                        }
+                        setView={setCurrentView}
+                        comparedSchools={comparedSchools}
+                        toggleComparedSchool={toggleComparedSchool}
+                        schoolID={selectedSchool ?? ''}
+                    />
+                )
             case 'compareFormations':
-                return <CompareFormations comparedSchools={comparedSchools} toggleComparedSchool={toggleComparedSchool} schoolsData={schoolsCache} />
+                return (
+                    <CompareFormations
+                        comparedSchools={comparedSchools}
+                        toggleComparedSchool={toggleComparedSchool}
+                        schoolsData={schoolsCache}
+                    />
+                )
             default:
                 return <p>Seems like something is broken :( Reload the page</p>
         }
@@ -105,10 +127,7 @@ function App() {
                     content="Visualiseur des données publiques de Parcoursup"
                 />
             </Helmet>
-            <Header
-                currentView={currentView}
-                setView={setCurrentView}
-            />
+            <Header currentView={currentView} setView={setCurrentView} />
             <section className="pcs-main-section">{renderView()}</section>
             <About />
         </section>

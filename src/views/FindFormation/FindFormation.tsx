@@ -12,8 +12,13 @@ export interface FindFormationProps {
 }
 
 const FindFormation = (props: FindFormationProps) => {
-    const { schoolsData, setSelectedSchool, loadFormations, currentQuery, setView } =
-        props
+    const {
+        schoolsData,
+        setSelectedSchool,
+        loadFormations,
+        currentQuery,
+        setView,
+    } = props
 
     const [coordProximity, setCoordProximity] = useState<number[]>([])
     return (
