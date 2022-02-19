@@ -7,6 +7,7 @@ import { openLink } from './openLink'
 import { loadFormations } from './loadFormations'
 import { calculateDistance } from './calculateDistance'
 import { toRad } from './toRad'
+import {generateFormationName} from './generateFormationName'
 export {
     formationToEmoji,
     pickRandomItem,
@@ -17,4 +18,5 @@ export {
     loadFormations,
     calculateDistance,
     toRad,
+    generateFormationName,
 }

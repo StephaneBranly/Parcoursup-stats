@@ -10,7 +10,7 @@ export const loadFormations = async (
             parcoursupAPI +
             `&q=${
                 query ?? ''
-            }&rows=-1&fields=cod_aff_form,g_ea_lib_vx,g_olocalisation_des_formations,fil_lib_voe_acc,detail_forma`
+            }&rows=10&fields=cod_aff_form,g_ea_lib_vx,g_olocalisation_des_formations,fil_lib_voe_acc,detail_forma`
         const result = await axios.get(requestURL)
         if (result.data)
             return [

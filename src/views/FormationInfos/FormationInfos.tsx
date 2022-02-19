@@ -11,10 +11,14 @@ import './FormationInfos.scss'
 
 export interface FormationInfosProps {
     currentSchool: Record<string, any> | undefined
+    setView: (view: string) => void
+    toggleComparedSchool: (schoolID: string) => void
+    comparedSchools: string[]
+    schoolID: string
 }
 
 const FormationInfos = (props: FormationInfosProps) => {
-    const { currentSchool } = props
+    const { currentSchool, setView, toggleComparedSchool, comparedSchools, schoolID } = props
     const s = currentSchool
 
     const renderRankLastCalled = () => {
@@ -77,9 +81,9 @@ const FormationInfos = (props: FormationInfosProps) => {
                 <h1 className="pcs-formationinfos-title">
                     Informations générales
                 </h1>
-                <div className="pcs-formationinfos-main">
+                <div className="pcs-formationinfos-main clickable" onClick={() => setView('findFormation')}>
                     <h1 className="pcs-schoolname">
-                        Recherchez une formation pour visualiser ses
+                        🔍 Recherchez une formation pour visualiser ses
                         informations
                     </h1>
                 </div>
@@ -92,6 +96,9 @@ const FormationInfos = (props: FormationInfosProps) => {
                     Parcoursup - Statistiques - {getField(s, 'g_ea_lib_vx')} - {getField(s, 'fil_lib_voe_acc')}
                 </title>
             </Helmet>
+            <div className='pcs-formationinfos-compared'>
+                <button onClick={() => toggleComparedSchool(schoolID)}>{comparedSchools.includes(schoolID) ? 'Retirer du comparateur' : "Ajouter au comparateur"}</button>
+            </div>
             <h1 className="pcs-formationinfos-title">Informations générales</h1>
             <div className="pcs-formationinfos-main">
                 <h1 className="pcs-schoolname">

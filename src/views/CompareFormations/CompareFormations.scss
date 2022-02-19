@@ -1,6 +1,6 @@
 @import '../../theme/theme.scss';
 
-.pcs-formationinfos-fragment {
+.pcs-compareFormations-fragment {
     display: flex;
     flex: 1 1;
     position: relative;
@@ -16,7 +16,7 @@
     }
 }
 
-.pcs-formationinfos-main {
+.pcs-compareFormations-main {
     background-color: $red;
     border-radius: $unit * 3;
     padding: $unit;
@@ -29,7 +29,7 @@
     }
 }
 
-.pcs-formationinfos-stats {
+.pcs-compareFormations-stats {
     background-color: $farine;
     border-radius: $unit * 3;
     border: 2px solid $blue3;
@@ -43,7 +43,7 @@
     }
 }
 
-.pcs-formationinfos-title {
+.pcs-compareFormations-title {
     padding: 0;
 }
 

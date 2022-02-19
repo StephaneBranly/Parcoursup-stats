@@ -1,6 +1,7 @@
 import Header from './Header/Header'
 import MapWrapper from './MapWrapper/MapWrapper'
 import GirlBoyProportion from './GirlBoyProportion/GirlBoyProportion'
+import CompareGirlBoyProportion from './CompareGirlBoyProportion/CompareGirlBoyProportion'
 import FunnelCandidates from './FunnelCandidates/FunnelCandidates'
 import StatsCard from './StatsCard/StatsCard'
 import BaccalaureatMention from './BaccalaureatMention/BaccalaureatMention'
@@ -14,6 +15,7 @@ export {
     Header,
     MapWrapper,
     GirlBoyProportion,
+    CompareGirlBoyProportion,
     FunnelCandidates,
     StatsCard,
     BaccalaureatMention,

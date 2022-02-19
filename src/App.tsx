@@ -6,13 +6,14 @@ import { Helmet } from 'react-helmet'
 
 import { About, Header } from 'components'
 import { loadFormations, loadFormationData } from 'utils'
-import { FindFormation, FormationInfos } from 'views'
+import { CompareFormations, FindFormation, FormationInfos } from 'views'
 
 function App() {
     const [currentView, setCurrentView] = useState<string>('findFormation')
     const [selectedSchool, setSelectedSchool] = useState<
         string | undefined
     >()
+    const [comparedSchools, setComparedSchools] = useState<string[]>([])
     const [schoolsData, setSchoolsData] = useState<Record<string, any>[]>([])
     const [allSchoolsData, setAllSchoolsData] = useState<Record<string, any>[]>(
         []
@@ -68,6 +69,12 @@ function App() {
         loadDataFromQuery()
     }, [])
 
+    const toggleComparedSchool = (schoolID: string) => {
+        if (!Object.keys(schoolsCache).includes(schoolID)) loadSchool(schoolID)
+        if (comparedSchools.includes(schoolID)) setComparedSchools(comparedSchools.filter((s) => s !== schoolID))
+        else setComparedSchools(comparedSchools.concat(schoolID))
+    }
+
     const renderView = () => {
         switch (currentView) {
             case 'findFormation':
@@ -81,9 +88,9 @@ function App() {
                     />
                 )
             case 'seeFormationInfos':
-                return <FormationInfos currentSchool={selectedSchool ? schoolsCache[selectedSchool] : {}} />
+                return <FormationInfos currentSchool={selectedSchool ? schoolsCache[selectedSchool] : undefined} setView={setCurrentView} comparedSchools={comparedSchools} toggleComparedSchool={toggleComparedSchool} schoolID={selectedSchool ?? ""} />
             case 'compareFormations':
-                return <div>Comparaison des formations</div>
+                return <CompareFormations comparedSchools={comparedSchools} toggleComparedSchool={toggleComparedSchool} schoolsData={schoolsCache} />
             default:
                 return <p>Seems like something is broken :( Reload the page</p>
         }
