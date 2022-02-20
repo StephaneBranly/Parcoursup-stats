@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/parcoursup-stats/static/css/main.b6d45d23.chunk.css",
-    "main.js": "/parcoursup-stats/static/js/main.81b77fd3.chunk.js",
-    "main.js.map": "/parcoursup-stats/static/js/main.81b77fd3.chunk.js.map",
+    "main.js": "/parcoursup-stats/static/js/main.df3dd5dd.chunk.js",
+    "main.js.map": "/parcoursup-stats/static/js/main.df3dd5dd.chunk.js.map",
     "runtime-main.js": "/parcoursup-stats/static/js/runtime-main.df1e5219.js",
     "runtime-main.js.map": "/parcoursup-stats/static/js/runtime-main.df1e5219.js.map",
     "static/js/2.68880c3c.chunk.js": "/parcoursup-stats/static/js/2.68880c3c.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.df1e5219.js",
     "static/js/2.68880c3c.chunk.js",
     "static/css/main.b6d45d23.chunk.css",
-    "static/js/main.81b77fd3.chunk.js"
+    "static/js/main.df3dd5dd.chunk.js"
   ]
 }
