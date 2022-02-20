@@ -12,14 +12,18 @@ export interface CompareFormationsProps {
 }
 
 const CompareFormations = (props: CompareFormationsProps) => {
-    const { comparedFormations, toggleComparedFormation, formationsData, loadFormation } = props
+    const {
+        comparedFormations,
+        toggleComparedFormation,
+        formationsData,
+        loadFormation,
+    } = props
     const girlBoyProportionData = comparedFormations.map((formationID) => {
         const s = formationsData[formationID]
-        if (!s)
-            {
-                loadFormation(formationID)
-                return []
-            }
+        if (!s) {
+            loadFormation(formationID)
+            return []
+        }
         return {
             formationID: formationID,
             formationName: generateFormationName(s),

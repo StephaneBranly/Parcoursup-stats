@@ -87,13 +87,14 @@ const FormationInfos = (props: FormationInfosProps) => {
                 <h1 className="pcs-formationinfos-title">
                     Informations générales
                 </h1>
-                {s && Object.keys(s).length === 0 && <div
-                    className="pcs-formationinfos-main"
-                >
-                     <h1 className="pcs-formationname">
-                        🙁 Nous n'avons pas trouvé la formation d'id {formationID}
-                    </h1>
-                </div>}
+                {s && Object.keys(s).length === 0 && (
+                    <div className="pcs-formationinfos-main">
+                        <h1 className="pcs-formationname">
+                            🙁 Nous n'avons pas trouvé la formation d'id{' '}
+                            {formationID}
+                        </h1>
+                    </div>
+                )}
                 <div
                     className="pcs-formationinfos-main clickable"
                     onClick={() => setView('findFormation')}

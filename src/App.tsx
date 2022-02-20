@@ -10,12 +10,16 @@ import { CompareFormations, FindFormation, FormationInfos } from 'views'
 
 function App() {
     const [currentView, setCurrentView] = useState<string>('findFormation')
-    const [selectedFormation, setSelectedFormation] = useState<string | undefined>()
+    const [selectedFormation, setSelectedFormation] = useState<
+        string | undefined
+    >()
     const [comparedFormations, setComparedFormations] = useState<string[]>([])
-    const [formationsData, setFormationsData] = useState<Record<string, any>[]>([])
-    const [allFormationsData, setAllFormationsData] = useState<Record<string, any>[]>(
+    const [formationsData, setFormationsData] = useState<Record<string, any>[]>(
         []
     )
+    const [allFormationsData, setAllFormationsData] = useState<
+        Record<string, any>[]
+    >([])
     const [formationsCache, setFormationCache] = useState<
         Record<string, Record<string, any>>
     >({})
@@ -23,9 +27,9 @@ function App() {
     const loadFormation = async (formationID: string): Promise<void> => {
         if (!Object.keys(formationsCache).includes(formationID)) {
             const result = await loadFormationData(formationID)
-            const newFormation: Record<string, any> = { }
+            const newFormation: Record<string, any> = {}
             newFormation[formationID] = result
-            setFormationCache({...newFormation, ...formationsCache})
+            setFormationCache({ ...newFormation, ...formationsCache })
         }
     }
 
@@ -67,33 +71,32 @@ function App() {
 
     useEffect(() => {
         loadDataFromQuery()
-        const urlParams = new URLSearchParams(window.location.search);
-        const q = urlParams.get('q');
-        const f = urlParams.get('f');
-        const c = urlParams.get('c');
-        if(f) {
+        const urlParams = new URLSearchParams(window.location.search)
+        const q = urlParams.get('q')
+        const f = urlParams.get('f')
+        const c = urlParams.get('c')
+        if (f) {
             handlerSetSelectedFormation(f)
             setCurrentView('seeFormationInfos')
-        }
-        else if(c) {
+        } else if (c) {
             const ids = c.split(',')
             loadComparedFormationsFromParam(ids)
-        }
-        else if(q) loadDataFromQuery(q)
-        
+        } else if (q) loadDataFromQuery(q)
     }, [])
 
     const loadComparedFormationsFromParam = async (ids: string[]) => {
         ids.forEach((id) => loadFormation(id))
         setComparedFormations(ids)
-        setCurrentView('compareFormations')        
+        setCurrentView('compareFormations')
     }
 
-    
     const toggleComparedFormation = async (formationID: string) => {
-        if (!Object.keys(formationsCache).includes(formationID)) await loadFormation(formationID)
+        if (!Object.keys(formationsCache).includes(formationID))
+            await loadFormation(formationID)
         if (comparedFormations.includes(formationID))
-            setComparedFormations(comparedFormations.filter((s) => s !== formationID))
+            setComparedFormations(
+                comparedFormations.filter((s) => s !== formationID)
+            )
         else setComparedFormations(comparedFormations.concat(formationID))
     }
 
@@ -128,7 +131,9 @@ function App() {
                     <CompareFormations
                         comparedFormations={comparedFormations}
                         toggleComparedFormation={toggleComparedFormation}
-                        formationsData={formationsCache} loadFormation={loadFormation}                    />
+                        formationsData={formationsCache}
+                        loadFormation={loadFormation}
+                    />
                 )
             default:
                 return <p>Seems like something is broken :( Reload the page</p>

@@ -10,7 +10,8 @@ export interface FormationListProps {
 }
 
 const FormationList = (props: FormationListProps) => {
-    const { formationsData, setSelectedFormation, setView, coordProximity } = props
+    const { formationsData, setSelectedFormation, setView, coordProximity } =
+        props
 
     const hasKey = (entry: Record<string, any>, key: string): boolean => {
         return Object.keys(entry).includes(key)
