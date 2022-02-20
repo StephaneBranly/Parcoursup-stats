@@ -3,14 +3,14 @@ import { calculateDistance } from 'utils'
 import './FormationList.scss'
 
 export interface FormationListProps {
-    schoolsData: Record<string, any>[]
-    setSelectedSchool: (schoolID: string) => Promise<void>
+    formationsData: Record<string, any>[]
+    setSelectedFormation: (formationID: string) => Promise<void>
     setView: (view: string) => void
     coordProximity: number[]
 }
 
 const FormationList = (props: FormationListProps) => {
-    const { schoolsData, setSelectedSchool, setView, coordProximity } = props
+    const { formationsData, setSelectedFormation, setView, coordProximity } = props
 
     const hasKey = (entry: Record<string, any>, key: string): boolean => {
         return Object.keys(entry).includes(key)
@@ -25,7 +25,7 @@ const FormationList = (props: FormationListProps) => {
 
     const renderListItems = () => {
         if (coordProximity.length === 2)
-            return schoolsData
+            return formationsData
                 .sort((a, b) =>
                     checkEntryAsCoord(a) &&
                     checkEntryAsCoord(b) &&
@@ -44,21 +44,21 @@ const FormationList = (props: FormationListProps) => {
                         ? -1
                         : 1
                 )
-                .map((school, index) => (
+                .map((formation, index) => (
                     <FormationItem
-                        setSelectedSchool={setSelectedSchool}
+                        setSelectedFormation={setSelectedFormation}
                         setView={setView}
                         key={index}
-                        schoolData={school}
+                        formationData={formation}
                     />
                 ))
         else
-            return schoolsData.map((school, index) => (
+            return formationsData.map((formation, index) => (
                 <FormationItem
-                    setSelectedSchool={setSelectedSchool}
+                    setSelectedFormation={setSelectedFormation}
                     setView={setView}
                     key={index}
-                    schoolData={school}
+                    formationData={formation}
                 />
             ))
     }

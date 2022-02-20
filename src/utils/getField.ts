@@ -1,4 +1,4 @@
-export const getField = (school: Record<string, any>, fieldName: string) => {
-    if (school[fieldName] !== undefined) return school[fieldName]
+export const getField = (formation: Record<string, any>, fieldName: string) => {
+    if (formation[fieldName] !== undefined) return formation[fieldName]
     return 'NaN'
 }

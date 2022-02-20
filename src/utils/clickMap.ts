@@ -4,7 +4,7 @@ import { transform } from 'ol/proj'
 export const clickMap = (
     evt: MapBrowserEvent<UIEvent>,
     map: Map,
-    setSelectedSchoolID: (id: string) => void,
+    setSelectedFormationID: (id: string) => void,
     setCoordProximity: (coord: number[]) => void
 ) => {
     const features: any[] = []
@@ -15,5 +15,5 @@ export const clickMap = (
     if (features[0].getProperties().features.length !== 1) return
     const properties = features[0].getProperties().features[0].getProperties()
     if (properties['cod_aff_form'])
-        setSelectedSchoolID(properties['cod_aff_form'])
+        setSelectedFormationID(properties['cod_aff_form'])
 }

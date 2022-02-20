@@ -4,8 +4,8 @@ import { Helmet } from 'react-helmet'
 import './FindFormation.scss'
 
 export interface FindFormationProps {
-    schoolsData: Record<string, any>[]
-    setSelectedSchool: (schoolID: string) => Promise<void>
+    formationsData: Record<string, any>[]
+    setSelectedFormation: (formationID: string) => Promise<void>
     loadFormations: (query?: string) => void
     currentQuery: string
     setView: (view: string) => void
@@ -13,8 +13,8 @@ export interface FindFormationProps {
 
 const FindFormation = (props: FindFormationProps) => {
     const {
-        schoolsData,
-        setSelectedSchool,
+        formationsData,
+        setSelectedFormation,
         loadFormations,
         currentQuery,
         setView,
@@ -33,14 +33,14 @@ const FindFormation = (props: FindFormationProps) => {
                     currentQuery={currentQuery}
                 />
                 <MapWrapper
-                    schoolsData={schoolsData}
+                    formationsData={formationsData}
                     dataAttribution={'Parcoursup 2021 - OpenStreetMap'}
-                    setSelectedSchool={setSelectedSchool}
+                    setSelectedFormation={setSelectedFormation}
                     setCoordProximity={setCoordProximity}
                 />
                 <FormationList
-                    schoolsData={schoolsData}
-                    setSelectedSchool={setSelectedSchool}
+                    formationsData={formationsData}
+                    setSelectedFormation={setSelectedFormation}
                     setView={setView}
                     coordProximity={coordProximity}
                 />

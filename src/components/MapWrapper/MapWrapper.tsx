@@ -15,8 +15,8 @@ import { clickMap } from 'utils'
 import { loadFeatures } from './loadFeatures'
 
 export interface MapWrapperProps {
-    schoolsData: Record<string, any>[]
-    setSelectedSchool: (schoolID: string) => Promise<void>
+    formationsData: Record<string, any>[]
+    setSelectedFormation: (formationID: string) => Promise<void>
     dataAttribution: string
     setCoordProximity: (coord: number[]) => void
 }
@@ -45,21 +45,21 @@ const MapWrapper = (props: MapWrapperProps) => {
             clickMap(
                 e as MapBrowserEvent<UIEvent>,
                 initialMap,
-                props.setSelectedSchool,
+                props.setSelectedFormation,
                 props.setCoordProximity
             )
         )
         // save map and vector layer references to state
         setMap(initialMap)
         setSource(new_source)
-        if (props.schoolsData.length)
-            loadFeatures(new_source, initialMap, props.schoolsData)
+        if (props.formationsData.length)
+            loadFeatures(new_source, initialMap, props.formationsData)
     }, [])
 
     useEffect(() => {
-        if (!source || !map || props.schoolsData.length === 0) return
-        loadFeatures(source, map, props.schoolsData)
-    }, [props.schoolsData])
+        if (!source || !map || props.formationsData.length === 0) return
+        loadFeatures(source, map, props.formationsData)
+    }, [props.formationsData])
 
     return (
         <div className="pcs-map-fragment">

@@ -10,22 +10,22 @@ import { getField } from 'utils'
 import './FormationInfos.scss'
 
 export interface FormationInfosProps {
-    currentSchool: Record<string, any> | undefined
+    currentFormation: Record<string, any> | undefined
     setView: (view: string) => void
-    toggleComparedSchool: (schoolID: string) => void
-    comparedSchools: string[]
-    schoolID: string
+    toggleComparedFormation: (formationID: string) => void
+    comparedFormations: string[]
+    formationID: string
 }
 
 const FormationInfos = (props: FormationInfosProps) => {
     const {
-        currentSchool,
+        currentFormation,
         setView,
-        toggleComparedSchool,
-        comparedSchools,
-        schoolID,
+        toggleComparedFormation,
+        comparedFormations,
+        formationID,
     } = props
-    const s = currentSchool
+    const s = currentFormation
 
     const renderRankLastCalled = () => {
         if (!s) return
@@ -60,7 +60,7 @@ const FormationInfos = (props: FormationInfosProps) => {
             </li>
         )
     }
-    const renderSameSchool = () => {
+    const renderSameFormation = () => {
         if (!s) return
         if (getField(s, 'pct_etab_orig') === 'NaN') return
         return (
@@ -81,17 +81,24 @@ const FormationInfos = (props: FormationInfosProps) => {
         )
     }
 
-    if (!s)
+    if (!s || Object.keys(s).length === 0)
         return (
             <div className="pcs-formationinfos-fragment">
                 <h1 className="pcs-formationinfos-title">
                     Informations générales
                 </h1>
+                {s && Object.keys(s).length === 0 && <div
+                    className="pcs-formationinfos-main"
+                >
+                     <h1 className="pcs-formationname">
+                        🙁 Nous n'avons pas trouvé la formation d'id {formationID}
+                    </h1>
+                </div>}
                 <div
                     className="pcs-formationinfos-main clickable"
                     onClick={() => setView('findFormation')}
                 >
-                    <h1 className="pcs-schoolname">
+                    <h1 className="pcs-formationname">
                         🔍 Recherchez une formation pour visualiser ses
                         informations
                     </h1>
@@ -107,15 +114,15 @@ const FormationInfos = (props: FormationInfosProps) => {
                 </title>
             </Helmet>
             <div className="pcs-formationinfos-compared">
-                <button onClick={() => toggleComparedSchool(schoolID)}>
-                    {comparedSchools.includes(schoolID)
+                <button onClick={() => toggleComparedFormation(formationID)}>
+                    {comparedFormations.includes(formationID)
                         ? 'Retirer du comparateur'
                         : 'Ajouter au comparateur'}
                 </button>
             </div>
             <h1 className="pcs-formationinfos-title">Informations générales</h1>
             <div className="pcs-formationinfos-main">
-                <h1 className="pcs-schoolname">
+                <h1 className="pcs-formationname">
                     {getField(s, 'fil_lib_voe_acc')}
                 </h1>
                 <div>
@@ -162,7 +169,7 @@ const FormationInfos = (props: FormationInfosProps) => {
                             )}
                         {renderRankLastCalled()}
                         {renderSameAcademy()}
-                        {renderSameSchool()}
+                        {renderSameFormation()}
                         {renderBoursier()}
                     </ul>
                 </div>

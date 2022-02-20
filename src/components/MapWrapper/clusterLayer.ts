@@ -16,7 +16,7 @@ const clusterLayer = (clusterSource: any) => {
             let style = styleCache[size]
             if (!style || size === 1) {
                 if (size === 1) {
-                    const schoolName = feature
+                    const formationName = feature
                         .get('features')[0]
                         .getProperties()['g_ea_lib_vx']
                     style = [
@@ -28,7 +28,7 @@ const clusterLayer = (clusterSource: any) => {
                                 scale: 0.5,
                             }),
                             text: new Text({
-                                text: schoolName,
+                                text: formationName,
                                 offsetY: 10,
                             }),
                         }),

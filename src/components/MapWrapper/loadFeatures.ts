@@ -7,9 +7,9 @@ import VectorSource from 'ol/source/Vector'
 export const loadFeatures = (
     source: VectorSource<Geometry>,
     map: Map,
-    schoolsData: Record<string, any>[]
+    formationsData: Record<string, any>[]
 ) => {
-    const features = schoolsData
+    const features = formationsData
         .filter((entry) => {
             return entry['g_olocalisation_des_formations'] !== undefined
         })
